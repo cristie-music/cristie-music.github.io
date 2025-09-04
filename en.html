@@ -254,10 +254,76 @@
 
         .link-card {
             text-align: center;
-        }        
+        }    
+
+        
+
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.language-switcher a {
+    color: #3498db;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.language-switcher a:hover {
+    text-decoration: underline;
+}
+
+.language-switcher .flag {
+    font-size: 16px;
+}
+
+/* Стиль для переключателя в футере */
+.language-footer {
+    margin-top: 30px;
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.language-footer a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.language-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .language-switcher {
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
     </style>
 </head>
 <body>
+<div class="language-switcher">
+    <a href="index.html" title="Russian version">
+        <span class="flag">ru</span> RU
+    </a>
+</div>    
     <div class="container" style="opacity: 0.8;">
         <div class="content">
             <div class="header">
