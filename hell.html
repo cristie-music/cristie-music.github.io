@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Описание альбома Cristie - в ад и без меня</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .artist-image:hover {
+            transform: scale(1.02);
+        }		
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-style: italic;
+        }
+        
+        .song-section {
+            margin-bottom: 40px;
+        }
+        
+        .song-image {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 0 25px 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .song-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .song-content {
+            text-align: justify;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .song-content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .song-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .thanks-section {
+            text-align: center;
+            margin: 60px 0 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .thanks-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .thanks-section p {
+            font-size: 1.1em;
+            color: #555;
+            font-style: italic;
+        }
+        
+        .reviews-section {
+            margin-top: 50px;
+        }
+        
+        .reviews-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 310px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            user-select: none;
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .dots-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bdc3c7;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active, .dot:hover {
+            background-color: #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .song-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 15px 10px 0;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .song-content {
+                font-size: 1em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .song-image {
+                float: none;
+                display: block;
+                margin: 0 auto 20px auto;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="opacity: 0.8;">
+        <div class="content">
+            <div class="header">
+                <h1>А В ад и без меня?</h1>
+				<img src="artist.jpg" alt="Фото артиста" class="artist-image">
+                <h2>Исполнитель - Cristie</h2>
+            </div>
+     
+
+            <div class="song-section">
+                <div class="song-title">Начнем наше путешествие?</div>
+                <div class="song-content">
+                    Привет, мой дорогой слушатель!
+Спасибо тебе что нашел время на меня и мою музыку. Для меня правда очень важно что ты слушаешь и чувствуешь ее.
+
+Сегодня мы вместе окунемся в темный мир моего альбома - В АД и без меня?
+
+Да, у альбома 2 названия, это не ошибка, это отсылка к временам кассет, на которых была сторона А и сторона B, помнишь?)
+
+Сторона А - короткая, это альбом - А АД и без меня, а сторона B - это полная версия альбома без ограничений, с бонус треками.
+
+Мой текст сегодня, это буклет к этому альбому, объяснения и откровения слушателю, что я чувствовала когда создавала его, что вложила и о чем каждый трек..
+
+Сейчас мы вместе с тобой будем качаться на волнах, мы начнем с тихой грусти, перейдем к безумию, мести и доплывем до эйфории, будет интересно.
+
+Но сперва мы поговорим а о чем вообще этот альбом?
+Он о чувствах, он о внутренней борьбе, свободе, перерождении, грусти, разочаровании и одиночестве..
+Знакомо правда? 
+
+Ты наверное думаешь, а вложила ли я себя? Или это просто строки?
+
+Разумеется да, вся боль в моих текстах это моя боль, это то как я чувствую и что я хочу донести миру, до тебя, до твоего сердца.
+
+Ну что, начнем наше путешествие?
+                </div>
+            </div>
+	 
+            <div class="song-section">
+                <div class="song-title">1. Sad demon, он же Мой демон</div>
+                <div class="song-content">
+                    <img src="song1.jpg" alt="Обложка песни 1" class="song-image">
+Первый трек, Sad demon, он же Мой демон.
+Это один из самых сильных для меня треков, он бьёт по моей душе так сильно, что по ночам я просыпаюсь от кошмаров с флешбэками.
+Это история чувств ребенка, который любил несмотря ни на что, старался, терпел, искал причины в себе, но так и не смог справится с грузом вины. Вины, которая стала болью, ненавистью, движущей силой, которая в итоге полностью изменила меня. Мне было больно годами, но эта боль сделала меня. Она меня отрезала от старого мира и привела в новый, который я строю сама. Это больно, но необходимо.
+Этот трек, посыл что любую боль ты в силе преодолеть, ты можешь переродиться, но ещё он напоминает о том что нужно любить своих детей.
+У меня ушли годы чтобы снова собрать все кусочки разбитой картины и теперь моя душа похожа на склеенный разбитый витраж в котором некоторых кусков не будет никогда.
+
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">2. Маска Фантазма</div>
+                <div class="song-content">
+                    <img src="song2.jpg" alt="Обложка песни 2" class="song-image">
+Грустно, правда? 
+Давай немного отдохнем в нашей поездке?
+Второй трек, Маска Фантазма или Phantasm. В детстве я любила мультики про супергероев, Дисней мне не зашёл. Но я всегда не могла понять, почему большая часть женских супергероев такая отстойная? Чудо женщина, супергёрл? Но потом, я посмотрела мультфильм, который для меня навсегда стал самым любимым. Это Бэтмен Маска Фантазма. Мой трек посвящен главной героине - Андреи Бомонт, она же скрывается под маской Фантазма, сильного, смелого персонажа, которым движет месть. История сломанной любви, сильными героями и тоской в конце. Я люблю такое. Я надеюсь я смогла передать атмосферу этого шедевра в своем треке. У него кстати есть продолжение, да, эта история не заканчивается, скоро вы ее услышите, или уже услышали)
+В любом случае, Андреа навсегда в моем сердце.
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">3. Пеннивайз</div>
+                <div class="song-content">
+                    <img src="song3.jpg" alt="Обложка песни 3" class="song-image">
+Ну что, отдохнул? Дальше мы шагнем в безумие. Я думаю ты уже заметил, что я люблю качели и мои треки очень разные, там есть грусть, тоска, ирония, треш, угар, юмор, безумие. Я просто люблю разное и не могу придерживаться одного стиля и направления, я разная и моя музыка тоже. 
+Пеннивайз, это трек представитель треша в моей голове. Я люблю хорроры, я люблю представлять себя на месте главных героев, маньяков, мне всегда интересно - а что у них в голове? Что им движет? Почему он стал таким?
+Пеннивайз это экспериментальный трек, каждый раз, я думаю что лучше у меня не получится, что темнее и жёстче уже никак, а потом оп! И получается Оно.
+Я люблю творчество Кинга, хоть и не все, но эту книгу определенно люблю, а как ты уже заметил, я люблю посвящать треки любимым произведениям..
+А ещё я люблю тот мрак с которым он получился, после его прослушивания, я хочу перечитать книгу..
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">4. Спокойной ночи трупики!</div>
+                <div class="song-content">
+                    <img src="song4.jpg" alt="Обложка песни 4" class="song-image">
+Ну что, теперь перейдем к веселью? Как насчёт иронии и черного юмора?
+Да, мы поговорим про - Спокойной ночи трупики! Один из моих любимых треков!
+Как он вообще получился? Я обожаю мемы! Люблю черный юмор и мне реально нравились старые сериалы, теже улицы разбитых фонарей! Ну как можно не любить Дукалиса? А их танец?
+А мемные фразы с ними?
+Песня посвящена ребенку 90х, который жил в обстановке безумия и хаоса, но любил мультики. Но ведь тогда чего только не показывали? Ребенок мог смотреть любые программы, я реально помню как было интересно смотреть Криминальную Россию, там же ВЗРОСЛЫХ показывают! Что-то серьезное! Интересно! Трупы! Криминал!
+Тогда родителям было не до того что их чадо смотрит, смотрит и ладно, главное занят. Этот трек смесь мемов и духа того времени. Честно, я не люблю когда 90е вспоминают вайбом соток, жвачки турбо и ТД и ностальгируют. Не хотела бы я вернуться в то время, сейчас намного лучше..  Но, получилось неплохо, я люблю этот трек, он, как и логотоп ВИД спонсор моей поломанной психики!
+
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">5. Круги (Circles)</div>
+                <div class="song-content">
+                    <img src="song5.jpg" alt="Обложка песни 5" class="song-image">
+Не заскучал? Идём дальше.
+Круги (Circles), на удивление самая популярная песня альбома. Мне она нравится, но она получилась случайно.
+Я постоянно о чем то думаю, размышляю и иногда записываю свои рассуждения. Иногда я не могу уснуть и много думаю о вечном, смысле жизни, зачем я вообще существую? Кто я вообще? Эти мысли идут по кругу. В одну из таких ночей я решила склеить свои мысли в строки и текст мне понравился, хотя я считаю что он не идеален, и наверное даже скажу что проходной.. У меня был подходящий семпл, я попробовала напеть и что-то получилось. Я решила что доведу начатое до конца, хоть это и не самая однозначная моя композиция. Но знаешь, мне понравилось, мне нравится какой в нее получилось заложить смысл, несмотря на ее простоту. И да, меня греет мысль что когда то из меня вырастет дерево, отдам дань природе..
+
+                </div>
+            </div>
+
+
+            <div class="song-section">
+                <div class="song-title">6. Тень</div>
+                <div class="song-content">
+                    <img src="song6.jpg" alt="Обложка песни 6" class="song-image">
+Тень. Сложная песня, честно. Очень личная. Была написана в период депрессии, тогда мне только назначили антидепрессанты, тогда в моей жизни наступил тупик, все потухло, я выгорела. 
+Знаешь, все в твоей жизни объективно хорошо, тебя любят, многие скажут что грустить не о чем, ты чего? А у меня была пустота. Просто внутри ничего. Мне хотелось просто уснуть и больше не проснутся, ведь зачем? Что я чувствую? Ничего. Понимала что проснутся просто надо, ради других, но не себя. Мне не было себя жалко, скорее мне было грустно что другие страдают из-за меня, моей пустоты, я была реально как робот, кукла без чувств. Смысла просто не было. Вставать было сложно, но я смогла. Именно в этом состоянии были написаны эти строки, а сам трек записан только через год, у меня не было желания его делать, а текст был написан чтобы разобраться что со мной и что я чувствую. Сейчас со мной все хорошо, этот период позади, но я буду помнить его всегда, чтобы снова не провалится в эту пустоту.
+
+
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">7. Demon inside или Мой демон</div>
+                <div class="song-content">
+                    <img src="song7.jpg" alt="Обложка песни 7" class="song-image">
+Опять грусть. Но мы ещё немного погрустим. Следующий трек Demon inside или Мой демон.
+Этот трек можно назвать сиквелом трека Sad Demon, но он про другое. Он про людей их чувства и личные травмы, которые мы как чемодан тащим за собой. 
+Он про самопожертвование ради других и про последствия действий которые мы не можем изменить, про выбор который порой делаем не мы, а наши травмы. Иногда они направляют нас и делают выбор, а не мы. В песне героиня разрывается в выборе, причинить боль или пожертвовать собой? Принять демона в себе или просто уйти, ведь когда тебе все равно - проще.
+А ещё это отсылка к треку human rag'n'bone, мне он нравится, но не в оригинале, однажды я слышала живое выступление уличной музыкантки и оно было намного лучше, жаль у меня не хватило смелости познакомится. Больше этот вариант я никогда не слышала и не смогла найти. 
+Эта песня про внутреннюю борьбу и противоречия, про выбор, брать с собой чемодан или может пора разобраться что за вещи ты таскаешь с собой?
+
+
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">8. Балтика Play Квин</div>
+                <div class="song-content">
+                    <img src="song8.jpg" alt="Обложка песни 8" class="song-image">
+Все, хватит грустить, перерыв. 
+Балтика Play Квин. Очень люблю эту песню. Она лёгкая, веселая, ироничная, с отсылками.
+Я люблю игры! Реально, наигранных часов у меня много! В играх я люблю разное, от morrowind, Mafia, silent hill, NFS underground, mass effect, dead space, postal 2 , vampire: the masquerade bloodlines  это только часть. 
+Пиво я тоже люблю, но разное, по настроению. Ну и пирожки и сосиски в тесте - моя любовь однозначно!
+Так что эта песня ироничная калька с меня с упором на юмор и иронию.
+
+                </div>
+            </div>	
+			
+            <div class="song-section">
+                <div class="song-title">9. Careless или Беспечный</div>
+                <div class="song-content">
+                    <img src="song9.jpg" alt="Обложка песни 9" class="song-image">
+Этот трек моя дань уважения Фредди Меркьюри. Я люблю Queen, и песню careless whisper. Мне хотелось сделать трек по мотивам, передать этот вайб в своем стиле, на разных языках. У этой песни две версии, я не смогла выбрать какая лучше и оставила обе. Мне кажется у меня неплохо получилось.
+
+
+                </div>
+            </div>		
+			
+            <div class="song-section">
+                <div class="song-title">10. Эйфория (Love Euphoria)</div>
+                <div class="song-content">
+                    <img src="song10.jpg" alt="Обложка песни 10" class="song-image">
+Эх, опять грусть. Эйфория. Она самая. 
+Песня была написана на эмоциях в период когда у моих друзей начали распадаться семьи, по разным причинам. Знаете, у меня триггер на такое, на разводы, измены. Мне было тяжело понять почему мужчины изменяют, оставляют детей в их сложный период одних, ведь я сама прошла через такое, я помню как плохо быть ребенком которого делят, и каждый пытается доказать что он прав, а другой твой враг. Разводов было много, один за другим, ситуации похожие. Ещё ситуацию усугубили соцсети в которых я читала подобные истории, это все вызывало бурю эмоций.
+Поэтому трек эйфория, это про эмоции, не мои, а всех тех от кого ушли, бросили. То как я это почувствовала и как это передала. Но помни, любая боль проходит, очередная волна может стать последней и наступит гладь.
+
+
+                </div>
+            </div>	
+			
+            <div class="song-section">
+                <div class="song-title">Сторона B</div>
+                <div class="song-content">
+				<img src="tape.png" alt="Обложка песни 11" class="song-image">
+Фух! Мы прошли по первой части альбома, части А, но впереди еще часть B.
+Готов? Не устал? Налей чаю и приготовься, осталось немного..
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">11. Sad demon (альтернативная версия)</div>
+                <div class="song-content">
+                    <img src="song11.jpg" alt="Обложка песни 11" class="song-image">
+Сторона B начинается с альтернативной версии Sad demon. 
+Она получилась случайно, это был эксперимент, ее альтернативное видение. 
+Мне стало интересно, а можно эту боль передать с другим оттенком? 
+В итоге я оставила ее, надеюсь тебе она нравится..
+
+                </div>
+            </div>		
+
+
+            <div class="song-section">
+                <div class="song-title">12. Careless (альтернативная версия)</div>
+                <div class="song-content">
+                    <img src="song12.jpg" alt="Обложка песни 12" class="song-image">
+Также на стороне B есть альтернативная версия Careless.
+Да, я снова не смогла выбрать лучший вариант и оставила оба)
+
+                </div>
+            </div>	
+			
+            <div class="song-section">
+                <div class="song-title">Covers</div>
+                <div class="song-content">
+
+Дальше у нас идут каверы, давай расскажу про каждый, почему выбрала именно их?
+
+                </div>
+            </div>
+
+            <div class="song-section">
+                <div class="song-title">13. Elements (Riverline Cover)</div>
+                <div class="song-content">
+                    <img src="song13.jpg" alt="Обложка песни 13" class="song-image">
+Elements. Песня незаслуженно малоизвестной группы Riverline.
+Когда я первый раз их услышала, я офигела насколько похоже на Linkin park!
+Даже не по вокалу, нет, тут дело не в нем, а по духу!
+У ребят очень круто получилось! Мой кавер дань уважения их проекту и их идее посвятить альбом Linkin park
+
+                </div>
+            </div>	
+
+
+            <div class="song-section">
+                <div class="song-title">14. Numb (Linkin park Cover)</div>
+                <div class="song-content">
+                    <img src="song14.jpg" alt="Обложка песни 14" class="song-image">
+Numb. Ну что тут можно добавить?
+Linkin park мои вдохновители, как можно не любить Честера, его вокал, тексты и его боль?
+Я считаю их творчество это двигатель, который в свое время дал мне пинок к музыке!
+И я могу переслушивать их бесконечно. Но, мне очень нравится текст этой песни переведенный AI MORI, а т.к мой любимый язык Русский, я не могла спеть по другому.
+В этой версии есть пасхалка, там два моих вокала, да, я даже близко не Честер, но моя попытка мне нравится.
+
+                </div>
+            </div>			
+
+            <div class="song-section">
+                <div class="song-title">15. Parasite (Banshee Cover)</div>
+                <div class="song-content">
+                    <img src="song15.jpg" alt="Обложка песни 15" class="song-image">
+Parasite. Я считаю Banshee дико недооценена!
+Просто послушайте как она орет! Это великолепно!
+Да, текст простой, но блин глубокий!
+Мне нравится в этом треке совмещение физической боли и душевных страданий, как ты теряешь свою личность!
+Гнев, боль, утрата, безнадега. Однозначно мой вайб.
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">16. Crash (DeathbyRomy Cover)</div>
+                <div class="song-content">
+                    <img src="song16.jpg" alt="Обложка песни 16" class="song-image">
+Crash. DeathbyRomy однозначно крута!
+Не только по музыке, визуалу и текстам. 
+Все что она делает пропитано болью и страданиями - никаких хэппиэндов!
+По мне так идеально.
+В этом треке мне нравится атмосфера. Авария, вода, неизбежность, принятие, наслаждение, кульминация.
+Это просто красиво. И да, я добавила немного себя, пропев на Русском и Японском.
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">17. Коллекционер (Deadушки Cover)</div>
+                <div class="song-content">
+                    <img src="song17.jpg" alt="Обложка песни 16" class="song-image">
+Коллекционер. Deadушки и их OST к игре ядерный титбит, кто помнит тот знает!
+А кто не знает, пожалуйста не гуглите! Не ломайте себе психику!
+Хотя, если вы уже здесь, думаю отговаривать нет смысла)
+Что тут сказать, у песни очень глубокий текст, для меня это самое главное!
+О чем он? Трудно сказать, про бабочку или нет?
+Я уверена что каждый найдет в нем что-то свое.
+                </div>
+            </div>			
+            
+            <div class="thanks-section">
+                <h3>Благодарность за прослушивание</h3>
+                <p>Большое спасибо что дочитал и погрузился со мной в мой поток мыслей.
+Я очень благодарна тебе за прослушивание.
+Ваши отзывы на мои треки - самая большая благодарность.
+Спасибо тебе!
+Я очень надеюсь что моя музыка помогла тебе, я не знаю какие ты испытал эмоции, но возможно мы были на одной волне. 
+Знаешь музыка помогает, надеюсь я помогла тебе, вам всем.
+Что будет дальше?
+Поверь, будет интересно, прямо сейчас я готовлю новый материал!
+А чтобы не скучать, ты всегда можешь слушать меня <a href="https://www.bandlab.com/sosiska_cristie">тут</a>, там всегда все самое новое.</p>
+            </div>
+            
+            <div class="reviews-section">
+                <h3 class="reviews-title">Ваше мнение</h3>
+                <div class="slideshow-container">
+                    <div class="slide active">
+                        <img src="review1.jpg" alt="Отзыв 1">
+                    </div>
+                    <div class="slide">
+                        <img src="review2.jpg" alt="Отзыв 2">
+                    </div>
+                    <div class="slide">
+                        <img src="review3.jpg" alt="Отзыв 3">
+                    </div>
+                    <div class="slide">
+                        <img src="review4.jpg" alt="Отзыв 4">
+                    </div>
+                    <div class="slide">
+                        <img src="review5.jpg" alt="Отзыв 5">
+                    </div>
+                    <div class="slide">
+                        <img src="review6.jpg" alt="Отзыв 6">
+                    </div>					
+                    <div class="slide">
+                        <img src="review7.jpg" alt="Отзыв 7">
+                    </div>					
+                    <div class="slide">
+                        <img src="review8.jpg" alt="Отзыв 8">
+                    </div>					
+                    <div class="slide">
+                        <img src="review9.jpg" alt="Отзыв 9">
+                    </div>					
+                    <div class="slide">
+                        <img src="review10.jpg" alt="Отзыв 10">
+                    </div>					
+                    <div class="slide">
+                        <img src="review11.jpg" alt="Отзыв 11">
+                    </div>					
+                    <div class="slide">
+                        <img src="review12.jpg" alt="Отзыв 12">
+                    </div>                    
+                    <div class="slide">
+                        <img src="review13.jpg" alt="Отзыв 13">
+                    </div>					
+                    <div class="slide">
+                        <img src="review14.jpg" alt="Отзыв 14">
+                    </div>					
+                    <div class="slide">
+                        <img src="review15.jpg" alt="Отзыв 15">
+                    </div>					
+                    <div class="slide">
+                        <img src="review16.jpg" alt="Отзыв 16">
+                    </div>					
+                    <div class="slide">
+                        <img src="review17.jpg" alt="Отзыв 17">
+                    </div>					
+                    <div class="slide">
+                        <img src="review18.jpg" alt="Отзыв 18">
+                    </div>					
+					
+                    <a class="prev" onclick="changeSlide(-1)">❮</a>
+                    <a class="next" onclick="changeSlide(1)">❯</a>
+                </div>
+                
+                <div class="dots-container">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let slideIndex = 1;
+        
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+        
+        function showSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+        
+        // Автоматическое переключение слайдов каждые 5 секунд
+        setInterval(function() {
+            changeSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>

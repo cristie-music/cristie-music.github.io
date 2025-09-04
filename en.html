@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristie - Official Website | Cristie Baltika Play Queen | cristie_music</title>
+    <meta name="description" content="Official website of Cristie - experimental musician, composer, and conductor of a digital orchestra. Cristie Baltika Play Queen. Music, lyrics, videos, and the artist's philosophy.">
+    <meta name="keywords" content="Cristie, Cristie Baltika Play Queen, cristie_music, experimental music, alternative music, music artist, singer, composer, song lyrics, music videos, BandLab, Spotify, Yandex Music, YouTube Music, RVC, AI in music">
+    <meta name="author" content="Cristie">
+    <meta property="og:title" content="Cristie - Official Website">
+    <meta property="og:description" content="Experimental musician, composer, and conductor of a digital orchestra">
+    <meta property="og:type" content="website">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .artist-image2 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }        
+        
+        .artist-image:hover {
+            transform: scale(1.02);
+        }	
+
+        .artist-image2:hover {
+            transform: scale(1.02);
+        }        
+
+        .music-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-style: italic;
+        }
+        
+        .toc {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .toc h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .toc a:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .section-content {
+            text-align: justify;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .section-content p {
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+        }
+        
+        .social-links h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .link-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+        
+        .link-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .link-card p {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section-content {
+                font-size: 1em;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .social-links {
+                padding: 20px;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .link-card {
+            text-align: center;
+        }        
+    </style>
+</head>
+<body>
+    <div class="container" style="opacity: 0.8;">
+        <div class="content">
+            <div class="header">
+                <h1>Cristie</h1>
+                <img src="artist2.png" alt="Artist Photo" class="artist-image">
+                <h2>Experimental musician, composer, and conductor of a digital orchestra.</h2>
+            </div>
+
+            
+            <div class="section" id="streaming-main">
+                <div class="section-title" style="text-align: center;">Listen</div>
+                <div class="section-content">
+                    <div class="links-grid">
+                        <div class="link-card">
+                            <h4>BandLab</h4>
+                            <img src="67862-BandLab_Icon_Red.png" alt="BandLab Icon" class="artist-image2">
+                            <a href="https://www.bandlab.com/sosiska_cristie" target="_blank">BandLab</a>
+                            <p>(Main platform, newest tracks and demos)</p>
+                        </div>
+                        <div class="link-card">
+                            <h4>Spotify</h4>
+                            <img src="Spotify_icon.svg.png" alt="Spotify Icon" class="artist-image2">
+                            <a href="https://open.spotify.com/artist/4r2dxYMohCOpfdTIsea6zc?si=TOBfksuRSuS0Mm1niBVVvg" target="_blank">Listen on Spotify</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="links-grid">
+                    <div class="link-card">
+                        <h4>Yandex Music</h4>
+                        <img src="yandex-music-new.png" alt="Yandex Music Icon" class="artist-image2">
+                        <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" target="_blank">Yandex Music</a>
+                    </div>
+                    <div class="link-card">
+                        <h4>YouTube Music</h4>
+                        <img src="YouTube_full-color_icon_(2017).svg.png" alt="YouTube Music Icon" class="artist-image2">                            
+                        <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" target="_blank">YouTube Music</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#greeting">Introduction</a></li>
+                    <li><a href="#philosophy">My Philosophy</a></li>
+                    <li><a href="#about-me">About Me</a></li>
+                    <li><a href="#text-creation">How I Write Lyrics</a></li>
+                    <li><a href="#i-listen">What I Listen To & My Inspiration</a></li>
+                    <li><a href="#music-creation">Music Creation</a></li>
+                    <li><a href="#ai-question">The AI Question</a></li>
+                    <li><a href="#visual-art">Visual Art</a></li>
+                    <li><a href="#music-videos">Music Videos</a></li>
+                    <li><a href="#self-criticism">Self-Criticism</a></li>
+                    <li><a href="#hell">Album Description - To HELL and Without Me</a></li>
+                    <li><a href="#who">Who Am I?</a></li>
+                    <li><a href="#collaborations">Collaborations</a></li>
+                    <li><a href="#streaming">Music Streaming</a></li>
+                    <li><a href="#social">Social Media</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="greeting">
+                <div class="section-title">Introduction</div>
+                <div class="section-content">
+                    <p>Hello! I am Cristie, an experimental musician and I simply love creating music.</p> 
+                    <p>Thank you for taking the time to read about me and showing interest. It's very important for me to tell you - who I am, why I do all this, how I do it, what I put into my lyrics, everything, without cuts, I really want to be transparent for you and show what I feel.</p>
+                    <p>Well, shall we begin our acquaintance?
+                    As I already said, I am Cristie, but this is not just a pseudonym, every letter reflects me and has meaning:</p>
+                    <p><strong>C</strong> - Catastrophic<br>
+                    <strong>R</strong> - Redemptive<br>
+                    <strong>I</strong> - Infatuated<br>
+                    <strong>S</strong> - Sacrificial<br>
+                    <strong>T</strong> - Tender<br>
+                    <strong>I</strong> - Immortal<br>
+                    <strong>E</strong> - Enchanting</p>
+                    <p>Yes, internal contradictions are my element, my lyrics are built on this, I put my feelings and emotions into them.</p>
+                    <p>That's why the full pseudonym is Cristie Baltika Play Queen.</p>
+                    <p>A direct reference to the irony in one of my songs.</p>
+                    <p>Before we go further, I must explain why I do all this.</p>
+                </div>
+            </div>
+
+            <div class="section" id="philosophy">
+                <div class="section-title">My Philosophy</div>
+                <div class="section-content">
+                    <p>For me, Cristie is more than a name, it's a path, a philosophy, and here it is: once I decided that my main creed is not to create evil, to neutralize its influence. I try to express this through music, because sometimes to stop evil, you need to fall into HELL and lead it, at any cost. I know, it's a utopia, but it's my path.</p>
+                    <p>A path through the depth of lyrics, through irony and absurdity as a defense, through tears and lyricism - all so that you can feel.</p>
+                    <p>And with me, you can feel different things, relive traumatic experiences, feel sad, get inspired and stand up again, laugh, smile, feel pleasant nostalgia.</p>
+                    <p>I am different, I show it openly, I am not limited to one style, I like versatility.</p>
+                    <p>And most importantly, all this is not about commerce, everything I do - just as I feel, as it seems right to me.</p>
+                    <p>It is important for me to convey feelings and emotions through music, to give an opportunity to support someone, in any format.</p>
+                </div>
+            </div>
+
+            <div class="section" id="about-me">
+                <div class="section-title">About Me</div>
+                <div class="section-content">
+                    <p>Now I probably need to tell you something about myself? But you know, what can I tell?</p>
+                    <p>You've already noticed that I am a multifaceted and I would say absurd personality. It's trivial, but I am a person who fights routine, in life perhaps not so interesting and not very beautiful. This is true. My life is very dynamic, consists of a huge number of tasks and alas, music is far from the first place. In life, it's not visible who I am, at work you can't show it, friends won't all understand, and about what I'm writing here now, a couple of people from my circle know. If I try to describe myself, the first thing that comes to mind is a broken stained glass window that was somehow glued together and it turned out something incomprehensible. I am contradictions, in me plays a sense of justice and great sadness for the imperfection of this world.</p>
+                    <p>With a drop of my music, I want to make the world a little brighter, yes it's Sisyphean labor, yes it's impossible, but I will do it.</p>
+                    <p>Probably, if you read me on Threads, you noticed that I either make people laugh, or write something encouraging, or stop any bullying and insults. And unfortunately, I get enough of the latter, I don't want people to transmit it to others.</p>
+                    <p>I had a long path, full of faith, hopes and disappointments. I put my experience and feelings into every line, as best I can.</p>
+                    <p>You know, it was very important for me to get your feedback about my music, it inspires me very much and I believe that I am not doing this in vain.</p>
+                    <p>And so we come to the fact that I am an incognito artist, not because I want to, but in spite of, including so as not to hurt loved ones, and yes, alas, my work does not allow me, let's say, to shine my personality, what can I hide.</p>
+                </div>
+            </div>
+
+            <div class="section" id="text-creation">
+                <div class="section-title">How I Write Lyrics</div>
+                <div class="section-content">
+                    <p>Now let's smoothly move on to the creative part. Let's talk about lyrics. I write them differently, as it turns out, if there is inspiration I can write immediately or in an hour, and if not, sometimes a week passes. I don't come up with a theme in advance or specially, for example for a news hook. Usually I just click, I record and either start writing right away, or step by step, until it works out.</p>
+                    <p>My lyrics are in 3 languages - Russian, English and Japanese. I love the first one the most, and on the last one I love to make references in the lyrics, and English is like glue between them. All my lyrics have a hidden meaning, even if they look ironic and funny, that's how I see the world and its reflection. And also between my tracks there is a bridge, they go like a book, but it's my book.</p>
+                    <p>I should probably clarify here that for me lyrics are not just lyrics, it's my therapeutic diary, through it I convert pain, emotions into a format that I can convey and everyone will hear something for themselves, something that will resonate. Yes, I bother a lot, and probably it's not visible from the side. Also, I specifically do not set myself limits in the format, so I have tracks based on comics, tracks with self-irony, trash and mockery (how else to show the absurdity in the world?), and my serious, deeply personal works.</p>
+                </div>
+            </div>
+
+            <div class="section" id="i-listen">
+                <div class="section-title">What I Listen To & My Inspiration</div>
+                <div class="section-content">
+                    <p>I should probably tell you what I listen to and what inspires me?</p>
+                    <p>I love different things, but here are my favorites:</p>
+                    <p><strong>Alice in chains</strong></p>
+                    <p><strong>Audioslave</strong></p>
+                    <p><strong>Pearljam</strong></p>
+                    <p><strong>Seether</strong></p>
+                    <p><strong>Linkinpark</strong></p>
+                    <p><strong>Pod</strong></p>
+                    <p><strong>Korn</strong></p>
+                    <p><strong>Stone sour</strong></p>
+                    <p><strong>The Neighbourhood</strong></p>
+                    <p><strong>Greenday</strong></p>
+                    <p><strong>Rekevin</strong></p>
+                    <p><strong>Disturbed</strong></p>
+                    <p><strong>Rage agaist the machine</strong></p>
+                    <p><strong>Rhcp</strong></p>
+                    <p><strong>Massive attack</strong></p>
+                    <p><strong>Rob zombie</strong></p>
+                    <p><strong>Ledzeppelin</strong></p>
+                    <p><strong>IDAI</strong></p>
+                    <p><strong>Celldweller</strong></p>
+                    <p><strong>Florence + the Machine</strong></p>
+                    <p><strong>Foo Fighters</strong></p>
+                    <p><strong>God Is An Astronaut</strong></p>
+                    <p><strong>Godsmack</strong></p>
+                    <p><strong>Ill Nino</strong></p>
+                    <p><strong>Marilyn Manson</strong></p>
+                    <p><strong>Nine Inch Nails</strong></p>
+                    <p><strong>Oomph</strong></p>
+                    <p><strong>Poe</strong></p>
+                    <p><strong>Portishead</strong></p>
+                    <p><strong>Queens Of The Stone Age</strong></p>
+                    <p><strong>Shinedown</strong></p>
+                    <p><strong>Silverchair</strong></p>
+                    <p><strong>Soundgarden</strong></p>
+                    <p><strong>Spineshank</strong></p>
+                    <p><strong>Staind</strong></p>
+                    <p><strong>Starset</strong></p>
+                    <p><strong>The Cardigans</strong></p>
+                    <p><strong>The Cranberries</strong></p>
+                    <p><strong>The White Stripes</strong></p>
+                    <p>And this is only a part.</p>
+                    <p>And what inspires me is constant soul-searching, brain-eating and the world around.</p>
+                </div>
+            </div>            
+
+            <div class="section" id="music-creation">
+                <div class="section-title">Music Creation</div>
+                <div class="section-content">
+                    <p>Now I probably need to tell you about the path to music, how I came to it at all.</p>
+                    <p>I came a long time ago, many years ago, then I recorded songs (completely different ones) under my electric guitar and I didn't really succeed. The thing is, I'm a terrible perfectionist, it's been hindering me for years.</p>
+                    <p>I just didn't give myself the right to start, to make mistakes, and I must add that my self-esteem was shit then (thanks to kind people). At some point, everything broke, several times, and honestly, it was not up to music at all, although I really love it.</p>
+                    <p>3 years ago there was a reboot. More precisely, let's say, I was broken for a long time, but it didn't work out, but it turned out that version which, although burned out, became as if by itself, different, which no longer wants that pain. Yes, everything inside burned out, but it gave me freedom, including from my former self.</p>
+                    <p>I clearly understood that I want to express this pain, to lead this flow and even though it is evil, in a way, I convert it into something good, yes stupid, yes naive, but I decided so. So these lyrics were born, not immediately, especially difficult is that I don't consider them perfect, like the music.</p>
+                    <p>I realized that my life simply does not give me the opportunity to do everything perfectly. My responsibility to loved ones, my work, huge responsibility, all this is an anchor in a way. But I love this anchor and cannot and do not want to throw it away.</p>
+                    <p>Then the first experiments began.
+                    Yes, there were lyrics, but where to get the music?
+                    Doing everything manually would be an overwhelming task, I'm also an impatient person, it became clear that the way it was before - no longer works and never worked.
+                    Later I came across the AIgitarist project, I was so impressed by the voice covers of Letov that my rationalism and curiosity took over, and I began to study how it was done.
+                    It turned out that RVC was used there.
+                    RVC is a tool that allows you to improve and enhance my own voice so that it sounds cleaner and better in tracks. Unlike neural networks that create music from scratch (like Suno), it works only with my vocals, like an advanced filter for the voice.
+                    I can train it on my best vocal parts, I can train my different vocals, lyrics, screams, everything I can do, and then refine it!
+                    It turns out I sing myself, and then enhance my own vocals.
+                    But, alas, this did not solve the problem with music, beats and so on..</p>
+                    <p>This is where the first path of experiments began, and this is where the chapter - cringe YouTube - begins
+                    Yes, exactly, the channel was created to at least try something, and I also don't consider myself beautiful (hello complexes) - so the main goal was just to post something. I was afraid of my lyrics, and who needs them (that's what I thought then).
+                    So I took covers, made my own crappy version of IDAI and a couple more songs.
+                    I made the music in suno then, yes, that's the truth, it was the simplest and fastest tool at that time. I spent a long time choosing exactly the style of sound I needed (so that it's decay, beautiful and not shit) and something began to work out. Yes, the feedback was negative, but I decided to go further, put a beautiful filter on my face, to at least like myself a little and continued.
+                    This was until I realized that this is another dead end. Suno gives me frames, not freedom, a new format was needed, but at the same time fast and effective.
+                    And I came up with it and I'm still improving it. And as for YouTube, my path is clearly visible on it, from drafts to full-fledged clips. And even the colors in the videos (from old to new) are not chosen by chance, they go from light to dark, then to red, and then to white, a dead face. This is not just like that, I show the path, that the further, the stronger the intensity, and what was - must be reborn. Even the crappy style of the videos shows that the one you see is locked in a bubble. But to be honest, I separate my creativity and what was before, I don't consider it something worthy, it was more emotional experiments than about music. Although I know that some of you like these covers, even though it's not quite about me. More about creating clips will be a little later.
+                    Let's move on.</p>
+                    <p>Let's get back to music.
+                    Suno has a feature with sound continuation, I took a guitar and recorded a small part and sent it to the AI, the result was not bad, the variations of sound were useful and expanded my horizons.</p>
+                    <p>But, I realized that I can go further.
+                    I will do the main points myself, in DAW, but then, I will make loops out of them through suno, select the best and glue them together.
+                    It turns out I accelerated the creation of samples for daw, to knock them down.
+                    But this added problems, all this kitchen creates flaws in the sound. I began to actively study plugins and izotope ozone and rx came to the rescue. I began to remove flaws, clicks, background sounds, etc.
+                    The final point was that I make a composition 90% and then do its transformation through remix suno
+                    It should be added that I rather use SUNO as an addition to DAW, in its editor I remove the flaws of the remix, I can add instruments. The remix itself is further edited in DAW.
+                    <p>It turns out how I create a track:</p>
+                    <p><strong>Write lyrics</strong></p>
+                    <p><strong>Think over the style and music</strong></p>
+                    <p><strong>Make beat sketches in daw</strong></p>
+                    <p><strong>Transform sketches in AI and make loops out of them</strong></p>
+                    <p><strong>Knock it all into a composition step by step</strong></p>
+                    <p><strong>Get the final, make a final remix of the instrumental in AI</strong></p>
+                    <p><strong>Remove all flaws with plugins</strong></p>
+                    <p><strong>Create background sounds with another neural network (rustle of leaves, screams, shots, etc.)</strong></p>
+                    <p><strong>Clean them and add to the composition</strong></p>
+                    <p><strong>On the finished instrumental I write vocals</strong></p>
+                    <p><strong>As a rule, many parties, choose the best</strong></p>
+                    <p><strong>Then convert the vocals through RVC</strong></p>
+                    <p><strong>Combine vocal tracks</strong></p>
+                    <p><strong>Then run the vocals through the plugins again.</strong></p>
+                    <p><strong>There may be more than one vocal track, on different RVC models.</strong></p> </p>
+                    <p>As a result, a track is obtained.
+                    Is it worth it?
+                    Definitely worth it - by going crazy, I can make a track in a week and a half, and that's very fast. This is exactly what I need.</p>
+                    <p>You will say that I am a pervert, and yes, you are right, but this is my path and my freedom.
+                    I like to mix different tools that at first glance are incompatible.
+                    And it also gives me freedom, I get a lot of variations in the process of work, I can immediately understand what suits and what does not.</p>
+                    <p>Probably now you are disappointed, I understand, but this is the truth, I am not perfect, neither outside nor inside, as is, this is my truth, my choice.</p>
+                </div>
+            </div>
+
+            <div class="section" id="ai-question">
+                <div class="section-title">The AI Question</div>
+                <div class="section-content">
+                    <p>Can I be called AI?
+                    I think not. I'm more of a hybrid, there are not many like me and we have no name, but I think the future is behind this.</p>
+                    <p>And since we are talking about AI - the lyrics are not AI, it's me, and in the track, what I feel and how I see is knocked down and recorded, is it important how it is done?
+                    If you listened and felt something, weren't the feelings real?
+                    Isn't that emotions?
+                    So the truth? Or not?
+                    It's not for me to decide.</p>
+                </div>
+            </div>
+
+            <div class="section" id="visual-art">
+                <div class="section-title">Visual Art</div>
+                <div class="section-content">
+                    <p>Something else. Personal, about appearance. I like to draw myself, the fact is that my work is related to AI and I am good at it (I train these bastards) Therefore, the art, covers and how I position myself are drawn in AI, yes, but I specially trained a model (lora) on my so-called ideal face, how I would like to look, but alas I will not. This is my way of reproducing inner beauty, yes strange, but such. And yes, my Instagram for some time (until I started leading Threads) was run by a robot (as I already said, my work is partially related to AI and I write different robots), which I created. I realized that this is not the path I want to develop and turned it off, enough for him to draw me.
+                    There is no value in these pictures and I think that I will just delete them soon. To be honest, Instagram is hard for me, I don't like this thing. So most likely I will put things in order there, leave only mini clips and those photos that I like myself, which I do myself.
+                    And by the way about the avatar (on bandlab and in the album description) - this is a reference to Shaun Morgan from Seether, he had a photo shoot in such tones.</p>
+                </div>
+            </div>
+
+            <div class="section" id="music-videos">
+                <div class="section-title">Music Videos</div>
+                <div class="section-content">
+                    <p>Now let's talk about music videos?
+                    This is an important part, once I made the song Twins, it was a spontaneous song, the lyrics just came to mind. I realized that I really want to visualize it. But my previous format was not suitable for this at all. I really love horror and I decided that for the sake of experiment, I will try to make a video. This was the first experience of creating a script, describing scenes, understanding what kind of picture I want to get. Then the question of choosing a tool arose, it definitely became veo3 and several local neural networks (otherwise how will I transfer myself to the frame), plus Hailuo AI for continuing scenes from the set static frames. I make static frames in local Stable Diffusion and Flux, with Lora trained on me. The scenes were made for a long time, I learned to write prompts as a director, so that veo3 understood angles, light, scene, composition and did not make porridge. Then I edit all this in a video editor, put it together. I had no understanding of what would happen, and no hope that the clip would be accepted, but honestly? The result surprised me, it was very well received and 10 thousand views at the start were a shock. I realized that I like the process of creating scenes, writing a script, embodying the idea piece by piece. I definitely want more and my second experience on the clip Russian Samurai proved that I can be versatile in clips too. And then I started making mini clips, and I want to make them for part of the album tracks - To HELL and Without Me. In general, I'm not going to stop, but I'll be honest, it's difficult. My YouTube for the first time became not cringe, for me it is important.</p>
+                </div>
+            </div>
+
+            <div class="section" id="self-criticism">
+                <div class="section-title">Self-Criticism</div>
+                <div class="section-content">
+                    <p>I think it's important.
+                    I am not a star and did not strive to be one.
+                    My lyrics are not unique, yes, there are guys much more talented than me, I know that.
+                    Instrumental? Of course, there is something to complain about, any pro will say that my music is passing, I know this.
+                    My approach to creating music is chaos, structured, but chaos.
+                    How to understand and read me?
+                    Honestly? I don't know myself.
+                    But I know something for sure.</p>
+                    <p>My lyrics help people, your reviews are direct proof and I am very grateful to you for that, really.</p>
+                    <p>And let's, to confirm this, just remember my album description - To HELL and Without Me - this is a therapeutic diary that helps others.</p>
+                </div>
+            </div>
+
+            
+            <div class="section" id="hell">
+                <div class="section-title">Album Description - To HELL and Without Me</div>
+                <div class="section-content">
+                    <p>Here you will find my album description - <a href="hell.html">To HELL and Without Me</a> </p>
+                    <p>There I tell you what each track is about and what I put into this album</p>
+                    <p>Personal, deep, gloomy..</p>
+                </div>
+            </div>     
+
+            <div class="section" id="who">
+                <div class="section-title">Who Am I?</div>
+                <div class="section-content">
+                    <p>In total, we come to the philosophical part of the question, who am I at all?</p>
+                    <p>I would say that I am a demon with burnt angel wings, which were also torn off and the soul was simply erased.
+                    I exist in spite, so to speak.
+                    Can my music be called AI?
+                    Well, if I put my soul into it and create it myself? Probably not?
+                    My vocals through AI? What's the difference from cleaning vocals in daw or in autotune?
+                    Yes, I digitized myself, but I even like it. I have my own digital copy in a way and more than one.</p>
+                    <p>What am I leading to, I am unique, contradictory, even in some way impossible - that's what makes me real.</p>
+                    <p>Sorry if I disappointed, I did not set such a goal, just such is my path.</p>
+                    <p>My dear listener, if you were not scared and you are still here, let's go further.</p>
+                </div>
+            </div>            
+
+            <div class="section" id="collaborations">
+                <div class="section-title">Collaborations</div>
+                <div class="section-content">
+                    <p>Do you do collabs?</p>
+                    <p>Yes! But rarely, and on my terms.
+                    As I already said, my music is not for everyone and it is important for me that it reflects me, so I don't sing and don't write lyrics on request - only if we coincided and I want to create it. But. I always keep my style, which means that I make a full-fledged track, write the lyrics, make beats and everything, everything, everything and only then, I give it into the hands of the second musician, he can edit the track, add his parts. But the main track always remains with me - this is my rule, my version. In almost all collabs, the versions are weaker than my original, so it is important for me to preserve it.
+                    And there are tracks that were made for a collab, but were not accepted, and this happens.</p>
+                    <p>Can I order lyrics or a song from you?
+                    Rather no than yes.
+                    For me, music is creativity, I can't imagine when it's on request, it's already a purchase, commerce, and I'm about freedom.
+                    I can write lyrics to a person if I want it myself, and I do that sometimes.
+                    Song lyrics or poems, yes, that happens. I had a thought to make lyrics in exchange for donations to charitable foundations, but honestly, I don't know.</p>
+                </div>
+            </div>
+
+            <div class="section" id="streaming">
+                <div class="section-title" style="text-align: center;">Music Streaming</div>
+                <div class="section-content">
+                    <div class="links-grid">
+                        <div class="link-card">
+                            <h4>BandLab</h4>
+                            <img src="67862-BandLab_Icon_Red.png" alt="BandLab Icon" class="artist-image">
+                            <a href="https://www.bandlab.com/sosiska_cristie" target="_blank">BandLab</a>
+                            <p>(Main platform, newest tracks and demos)</p>
+                        </div>
+                        <div class="link-card">
+                            <h4>Spotify</h4>
+                            <img src="Spotify_icon.svg.png" alt="Spotify Icon" class="artist-image">
+                            <a href="https://open.spotify.com/artist/4r2dxYMohCOpfdTIsea6zc?si=TOBfksuRSuS0Mm1niBVVvg" target="_blank">Listen on Spotify</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="links-grid">
+                    <div class="link-card">
+                        <h4>Yandex Music</h4>
+                        <img src="yandex-music-new.png" alt="Yandex Music Icon" class="artist-image">
+                        <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" target="_blank">Yandex Music</a>
+                    </div>
+                    <div class="link-card">
+                        <h4>YouTube Music</h4>
+                        <img src="YouTube_full-color_icon_(2017).svg.png" alt="YouTube Music Icon" class="artist-image">                            
+                        <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" target="_blank">YouTube Music</a>
+                        <p>Music and videos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="social">
+                <div class="section-title" style="text-align: center;">Social Media</div>
+                <div class="section-content">
+                    <div class="links-grid">
+                        <div class="link-card">
+                            <h4>YouTube Channel</h4>
+                            <img src="YouTube_full-color_icon_(2017).svg.png" alt="YouTube Icon" class="artist-image">                            
+                            <a href="https://www.youtube.com/@Cristie_music" target="_blank">YouTube Channel</a>
+                            <p>Videos and visual content</p>
+                        </div>
+                        <div class="link-card">
+                            <h4>Instagram</h4>
+                            <img src="Instagram_icon.png" alt="Instagram Icon" class="artist-image">
+                            <a href="https://www.instagram.com/cristie_music/" target="_blank">Instagram</a>
+                            <p>Visual materials</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="links-grid">
+                    <div class="link-card">
+                        <h4>Threads</h4>
+                        <img src="Threads_(app).png" alt="Threads Icon" class="artist-image">
+                        <a href="https://www.threads.com/@cristie_music" target="_blank">Threads</a>
+                        <p>Thoughts and communication</p>
+                    </div>
+                    <div class="link-card">
+                        <h4>Bandlink</h4>
+                        <img src="images-bandlink.png" alt="Bandlink Icon" class="artist-image">                            
+                        <a href="https://band.link/cristie" target="_blank">Bandlink</a>
+                        <p>Music and links</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <h3>Contact Me</h3>
+                <p style="font-size: 1.2em; margin-bottom: 20px;">If you want to share your thoughts about the music or just talk - I am always open for communication.</p>
+                <p style="font-size: 1em; color: #bdc3c7;">Your feedback on my tracks is the biggest gratitude.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
