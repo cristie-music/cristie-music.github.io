@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Description: Cristie - To Hell and Without Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .artist-image:hover {
+            transform: scale(1.02);
+        }		
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-style: italic;
+        }
+        
+        .song-section {
+            margin-bottom: 40px;
+        }
+        
+        .song-image {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 0 25px 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .song-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .song-content {
+            text-align: justify;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .song-content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .song-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .thanks-section {
+            text-align: center;
+            margin: 60px 0 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .thanks-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .thanks-section p {
+            font-size: 1.1em;
+            color: #555;
+            font-style: italic;
+        }
+        
+        .reviews-section {
+            margin-top: 50px;
+        }
+        
+        .reviews-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 310px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            user-select: none;
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .dots-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bdc3c7;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active, .dot:hover {
+            background-color: #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .song-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 15px 10px 0;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .song-content {
+                font-size: 1em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .song-image {
+                float: none;
+                display: block;
+                margin: 0 auto 20px auto;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="opacity: 0.8;">
+        <div class="content">
+            <div class="header">
+                <h1>And To Hell Without Me?</h1>
+				<img src="artist.jpg" alt="Artist photo" class="artist-image">
+                <h2>Artist - Cristie</h2>
+            </div>
+     
+
+            <div class="song-section">
+                <div class="song-title">Shall We Begin Our Journey?</div>
+                <div class="song-content">
+                    Hello, my dear listener!
+Thank you for taking the time for me and my music. It's truly important to me that you listen and feel it.
+
+Today, we'll dive together into the dark world of my album - To Hell and Without Me?
+
+Yes, the album has two titles, that's not a mistake, it's a reference to the times of cassettes which had side A and side B, remember?)
+
+Side A - the short version, is the album - And To Hell Without Me, and side B - is the full version of the album without restrictions, with bonus tracks.
+
+My text today is the booklet for this album, explanations and revelations to the listener about what I felt when creating it, what I put into it, and what each track is about..
+
+Right now, we'll ride the waves together, we'll start with quiet sadness, move to madness, revenge, and sail to euphoria. It will be interesting.
+
+But first, what is this album about anyway?
+It's about feelings, about internal struggle, freedom, rebirth, sadness, disappointment, and loneliness..
+Sounds familiar, right?
+
+You're probably wondering, did I put myself into it? Or are these just lines?
+
+Of course, all the pain in my lyrics is my pain, it's how I feel and what I want to convey to the world, to you, to your heart.
+
+So, shall we begin our journey?
+                </div>
+            </div>
+	 
+            <div class="song-section">
+                <div class="song-title">1. Sad Demon, aka My Demon</div>
+                <div class="song-content">
+                    <img src="song1.jpg" alt="Song 1 cover" class="song-image">
+The first track, Sad Demon, aka My Demon.
+This is one of the most powerful tracks for me, it hits my soul so hard that I wake up at night from nightmares with flashbacks.
+It's the story of a child's feelings who loved despite everything, tried, endured, looked for reasons in themselves, but couldn't cope with the burden of guilt. Guilt that became pain, hatred, a driving force that eventually completely changed me. I was in pain for years, but this pain made me. It cut me off from the old world and brought me to a new one that I'm building myself. It's painful, but necessary.
+This track is a message that any pain can be overcome, you can be reborn, but it also reminds that we need to love our children.
+It took me years to put all the pieces of the broken picture back together, and now my soul is like a glued broken stained glass window where some pieces will never be there again.
+
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">2. Phantasm's Mask</div>
+                <div class="song-content">
+                    <img src="song2.jpg" alt="Song 2 cover" class="song-image">
+Sad, right? 
+Let's take a little break on our journey?
+The second track, Phantasm's Mask or Phantasm. As a child, I loved superhero cartoons, Disney didn't appeal to me. But I could never understand why most female superheroes were so lame? Wonder Woman, Supergirl? But then, I watched an animated film that became my favorite forever. It's Batman: Mask of the Phantasm. My track is dedicated to the main character - Andrea Beaumont, who hides under the mask of Phantasm, a strong, brave character driven by revenge. A story of broken love, strong heroes, and melancholy in the end. I love that. I hope I managed to convey the atmosphere of this masterpiece in my track. By the way, it has a continuation, yes, this story doesn't end, you'll hear it soon, or maybe you already have?)
+In any case, Andrea is forever in my heart.
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">3. Pennywise</div>
+                <div class="song-content">
+                    <img src="song3.jpg" alt="Song 3 cover" class="song-image">
+Well, rested? Next, we'll step into madness. I think you've already noticed that I love swings and my tracks are very different, there's sadness, melancholy, irony, trash, fun, humor, madness. I just love different things and can't stick to one style and direction, I'm different and my music is too. 
+Pennywise is a track representing the trash in my head. I love horrors, I love imagining myself in the place of main characters, maniacs, I'm always interested - what's in their heads? What drives them? Why did they become like that?
+Pennywise is an experimental track, every time I think I can't do better, that it can't get darker and harsher, and then bam! And it works.
+I love King's work, though not all of it, but I definitely love this book, and as you've noticed, I love dedicating tracks to my favorite works..
+And I also love the darkness it turned out with, after listening to it, I want to reread the book..
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">4. Good Night, Corpses!</div>
+                <div class="song-content">
+                    <img src="song4.jpg" alt="Song 4 cover" class="song-image">
+Well, now let's move to fun? How about irony and black humor?
+Yes, we'll talk about - Good Night, Corpses! One of my favorite tracks!
+How did it even come about? I adore memes! I love black humor and I really liked old TV series, like Streets of Broken Lights! How can you not love Dukalis? And their dance?
+And the meme phrases with them?
+The song is dedicated to a child of the 90s who lived in an environment of madness and chaos, but loved cartoons. But back then, what didn't they show? A child could watch any programs, I really remember how interesting it was to watch Criminal Russia, they show ADULTS there! Something serious! Interesting! Corpses! Crime!
+Back then, parents didn't care what their child was watching, as long as they were occupied. This track is a mix of memes and the spirit of that time. Honestly, I don't like when the 90s are remembered with the vibe of hundred-dollar bills, Turbo gum, etc., and people get nostalgic. I wouldn't want to go back to that time, it's much better now.. But, it turned out well, I love this track, it's like the logo of VGTRK, the sponsor of my broken psyche!
+
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="song-title">5. Circles</div>
+                <div class="song-content">
+                    <img src="song5.jpg" alt="Song 5 cover" class="song-image">
+Not bored yet? Let's move on.
+Circles, surprisingly the most popular song of the album. I like it, but it came about by accident.
+I'm constantly thinking about something, reflecting, and sometimes I record my thoughts. Sometimes I can't sleep and think a lot about eternal things, the meaning of life, why do I even exist? Who am I anyway? These thoughts go in circles. One of those nights I decided to glue my thoughts into lines and I liked the text, though I think it's not perfect, and probably even say it's transitional.. I had a suitable sample, I tried to sing it and something worked. I decided I'd finish what I started, even though it's not my most unambiguous composition. But you know, I liked it, I like the meaning I managed to put into it, despite its simplicity. And yes, the thought that someday I'll grow into a tree warms me, I'll pay tribute to nature..
+
+                </div>
+            </div>
+
+
+            <div class="song-section">
+                <div class="song-title">6. Shadow</div>
+                <div class="song-content">
+                    <img src="song6.jpg" alt="Song 6 cover" class="song-image">
+Shadow. A difficult song, honestly. Very personal. Was written during a period of depression, when I had just been prescribed antidepressants, then a dead end came in my life, everything faded, I burned out. 
+You know, everything in your life is objectively good, you're loved, many would say there's nothing to be sad about, what's wrong with you? And I had emptiness. Just nothing inside. I just wanted to fall asleep and not wake up, because why? What do I feel? Nothing. I understood that I had to wake up just for others, but not for myself. I didn't feel sorry for myself, rather I was sad that others were suffering because of me, my emptiness, I was really like a robot, a doll without feelings. There was just no meaning. It was hard to get up, but I managed. It was in this state that these lines were written, and the track itself was recorded only a year later, I didn't have the desire to make it, and the text was written to figure out what was wrong with me and what I was feeling. Now I'm fine, this period is behind me, but I will always remember it, so as not to fall into this emptiness again.
+
+
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">7. Demon Inside or My Demon</div>
+                <div class="song-content">
+                    <img src="song7.jpg" alt="Song 7 cover" class="song-image">
+More sadness. But we'll be sad a little more. The next track is Demon Inside or My Demon.
+This track can be called a sequel to Sad Demon, but it's about something else. It's about people, their feelings and personal traumas that we carry with us like luggage. 
+It's about self-sacrifice for others and about the consequences of actions we can't change, about choices that sometimes are made not by us, but by our traumas. Sometimes they guide us and make choices, not us. In the song, the heroine is torn in a choice, to cause pain or sacrifice herself? Accept the demon within or just leave, because when you don't care - it's easier.
+And it's also a reference to the track Human by Rag'n'Bone Man, I like it, but not the original, once I heard a live performance by a street musician and it was much better, too bad I didn't have the courage to meet her. I never heard that version again and couldn't find it. 
+This song is about internal struggle and contradictions, about choice, to carry your luggage with you or maybe it's time to figure out what things you're dragging with you?
+
+
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">8. Baltika Play Queen</div>
+                <div class="song-content">
+                    <img src="song8.jpg" alt="Song 8 cover" class="song-image">
+Enough sadness, break time. 
+Baltika Play Queen. I really love this song. It's light, fun, ironic, with references.
+I love games! Really, I have many hours played! I love different games, from Morrowind, Mafia, Silent Hill, NFS Underground, Mass Effect, Dead Space, Postal 2, Vampire: The Masquerade Bloodlines - this is only a part. 
+I also love beer, but different ones, depending on my mood. And pies and sausages in dough - definitely my love!
+So this song is an ironic caricature of me with an emphasis on humor and irony.
+
+                </div>
+            </div>	
+			
+            <div class="song-section">
+                <div class="song-title">9. Careless or Reckless</div>
+                <div class="song-content">
+                    <img src="song9.jpg" alt="Song 9 cover" class="song-image">
+This track is my tribute to Freddie Mercury. I love Queen, and the song Careless Whisper. I wanted to make a track inspired by it, to convey this vibe in my style, in different languages. This song has two versions, I couldn't choose which is better and kept both. I think I did pretty well.
+
+
+                </div>
+            </div>		
+			
+            <div class="song-section">
+                <div class="song-title">10. Euphoria (Love Euphoria)</div>
+                <div class="song-content">
+                    <img src="song10.jpg" alt="Song 10 cover" class="song-image">
+Ah, sadness again. Euphoria. That's it. 
+The song was written on emotions during a period when my friends' families started falling apart, for various reasons. You know, I have a trigger for that, for divorces, betrayals. It was hard for me to understand why men cheat, leave children alone in their difficult time, because I went through that myself, I remember how bad it is to be a child who is being divided, and each tries to prove they're right, and the other is your enemy. There were many divorces, one after another, similar situations. The situation was worsened by social media where I read similar stories, it all caused a storm of emotions.
+So the track Euphoria is about emotions, not mine, but of all those who were left, abandoned. How I felt it and how I conveyed it. But remember, any pain passes, another wave may be the last and calm will come.
+
+
+                </div>
+            </div>	
+			
+            <div class="song-section">
+                <div class="song-title">Side B</div>
+                <div class="song-content">
+				<img src="tape.png" alt="Side B cover" class="song-image">
+Phew! We've gone through the first part of the album, part A, but there's still part B ahead.
+Ready? Not tired? Pour some tea and get ready, there's not much left..
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">11. Sad Demon (alternative version)</div>
+                <div class="song-content">
+                    <img src="song11.jpg" alt="Song 11 cover" class="song-image">
+Side B begins with an alternative version of Sad Demon. 
+It came about by accident, it was an experiment, its alternative vision. 
+I wondered, can this pain be conveyed with a different shade? 
+As a result, I kept it, I hope you like it..
+
+                </div>
+            </div>		
+
+
+            <div class="song-section">
+                <div class="song-title">12. Careless (alternative version)</div>
+                <div class="song-content">
+                    <img src="song12.jpg" alt="Song 12 cover" class="song-image">
+Also on side B there's an alternative version of Careless.
+Yes, again I couldn't choose the better version and kept both)
+
+                </div>
+            </div>	
+			
+            <div class="song-section">
+                <div class="song-title">Covers</div>
+                <div class="song-content">
+
+Next, we have covers, let me tell you about each one, why I chose them?
+
+                </div>
+            </div>
+
+            <div class="song-section">
+                <div class="song-title">13. Elements (Riverline Cover)</div>
+                <div class="song-content">
+                    <img src="song13.jpg" alt="Song 13 cover" class="song-image">
+Elements. A song by the undeservedly little-known band Riverline.
+When I first heard them, I was amazed at how similar they sound to Linkin Park!
+Not in vocals, no, it's not about that, but in spirit!
+The guys did a great job! My cover is a tribute to their project and their idea to dedicate an album to Linkin Park.
+
+                </div>
+            </div>	
+
+
+            <div class="song-section">
+                <div class="song-title">14. Numb (Linkin Park Cover)</div>
+                <div class="song-content">
+                    <img src="song14.jpg" alt="Song 14 cover" class="song-image">
+Numb. What can I add here?
+Linkin Park are my inspirers, how can you not love Chester, his vocals, lyrics, and his pain?
+I think their work is an engine that at one time gave me a push towards music!
+And I can listen to them endlessly. But, I really like the text of this song translated by AI MORI, and since my favorite language is Russian, I couldn't sing it differently.
+In this version, there's an Easter egg, there are two of my vocals, yes, I'm nowhere near Chester, but I like my attempt.
+
+                </div>
+            </div>			
+
+            <div class="song-section">
+                <div class="song-title">15. Parasite (Banshee Cover)</div>
+                <div class="song-content">
+                    <img src="song15.jpg" alt="Song 15 cover" class="song-image">
+Parasite. I think Banshee is wildly underrated!
+Just listen to how she screams! It's magnificent!
+Yes, the text is simple, but damn deep!
+I like in this track the combination of physical pain and mental suffering, how you lose your identity!
+Anger, pain, loss, hopelessness. Definitely my vibe.
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">16. Crash (DeathbyRomy Cover)</div>
+                <div class="song-content">
+                    <img src="song16.jpg" alt="Song 16 cover" class="song-image">
+Crash. DeathbyRomy is definitely cool!
+Not only in music, visuals, and lyrics. 
+Everything she does is imbued with pain and suffering - no happy endings!
+For me, that's perfect.
+In this track, I like the atmosphere. Accident, water, inevitability, acceptance, enjoyment, culmination.
+It's just beautiful. And yes, I added a bit of myself by singing in Russian and Japanese.
+                </div>
+            </div>	
+
+            <div class="song-section">
+                <div class="song-title">17. Collector (Deadushki Cover)</div>
+                <div class="song-content">
+                    <img src="song17.jpg" alt="Song 17 cover" class="song-image">
+Collector. Deadushki and their OST for the game Nuclear Titbit, those who remember know!
+And those who don't, please don't google it! Don't break your psyche!
+Although, if you're already here, I think there's no point in talking you out of it)
+What can I say, the song has a very deep text, for me that's the most important thing!
+What is it about? Hard to say, about a butterfly or not?
+I'm sure everyone will find something of their own in it.
+                </div>
+            </div>			
+            
+            <div class="thanks-section">
+                <h3>Thank You for Listening</h3>
+                <p>Thank you so much for reading and diving with me into my stream of thoughts.
+I am very grateful to you for listening.
+Your feedback on my tracks is the biggest gratitude.
+Thank you!
+I really hope that my music helped you, I don't know what emotions you experienced, but maybe we were on the same wavelength. 
+You know, music helps, I hope I helped you, all of you.
+What's next?
+Believe me, it will be interesting, right now I'm preparing new material!
+And so you don't get bored, you can always listen to me <a href="https://www.bandlab.com/sosiska_cristie">here</a>, there's always everything new.</p>
+            </div>
+            
+            <div class="reviews-section">
+                <h3 class="reviews-title">Your Opinion</h3>
+                <div class="slideshow-container">
+                    <div class="slide active">
+                        <img src="review1.jpg" alt="Review 1">
+                    </div>
+                    <div class="slide">
+                        <img src="review2.jpg" alt="Review 2">
+                    </div>
+                    <div class="slide">
+                        <img src="review3.jpg" alt="Review 3">
+                    </div>
+                    <div class="slide">
+                        <img src="review4.jpg" alt="Review 4">
+                    </div>
+                    <div class="slide">
+                        <img src="review5.jpg" alt="Review 5">
+                    </div>
+                    <div class="slide">
+                        <img src="review6.jpg" alt="Review 6">
+                    </div>					
+                    <div class="slide">
+                        <img src="review7.jpg" alt="Review 7">
+                    </div>					
+                    <div class="slide">
+                        <img src="review8.jpg" alt="Review 8">
+                    </div>					
+                    <div class="slide">
+                        <img src="review9.jpg" alt="Review 9">
+                    </div>					
+                    <div class="slide">
+                        <img src="review10.jpg" alt="Review 10">
+                    </div>					
+                    <div class="slide">
+                        <img src="review11.jpg" alt="Review 11">
+                    </div>					
+                    <div class="slide">
+                        <img src="review12.jpg" alt="Review 12">
+                    </div>                    
+                    <div class="slide">
+                        <img src="review13.jpg" alt="Review 13">
+                    </div>					
+                    <div class="slide">
+                        <img src="review14.jpg" alt="Review 14">
+                    </div>					
+                    <div class="slide">
+                        <img src="review15.jpg" alt="Review 15">
+                    </div>					
+                    <div class="slide">
+                        <img src="review16.jpg" alt="Review 16">
+                    </div>					
+                    <div class="slide">
+                        <img src="review17.jpg" alt="Review 17">
+                    </div>					
+                    <div class="slide">
+                        <img src="review18.jpg" alt="Review 18">
+                    </div>					
+					
+                    <a class="prev" onclick="changeSlide(-1)">❮</a>
+                    <a class="next" onclick="changeSlide(1)">❯</a>
+                </div>
+                
+                <div class="dots-container">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let slideIndex = 1;
+        
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+        
+        function showSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+        
+        // Automatic slide switching every 5 seconds
+        setInterval(function() {
+            changeSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>
