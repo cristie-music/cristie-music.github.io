@@ -222,7 +222,7 @@
         
         @media (max-width: 768px) {
             .content {
-                padding: 30px 25px;
+                padding: 30px 15px;
             }
             
             .header h1 {
@@ -313,6 +313,34 @@
         right: 10px;
         font-size: 12px;
         padding: 6px 10px;
+    }
+}
+
+
+.form-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.yandex-form {
+    width: 100%;
+    max-width: 650px;
+    height: 500px; /* Можно регулировать по необходимости */
+    border: none;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .yandex-form {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .yandex-form {
+        height: 300px;
     }
 }
 
@@ -705,8 +733,9 @@
                 <h3>Contact Me</h3>
                 <p style="font-size: 1.2em; margin-bottom: 20px;">If you want to share your thoughts about the music or just talk - I am always open for communication.</p>
                 <p style="font-size: 1em; color: #bdc3c7;">Your feedback on my tracks is the biggest gratitude.</p>
+<div class="form-container">
                 <script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src="https://forms.yandex.ru/u/68c2b72a02848f3aab9e4bce?iframe=1" frameborder="0" name="ya-form-68c2b72a02848f3aab9e4bce" width="650"></iframe>
-                
+                </div>
             </div>
         </div>
     </div>
