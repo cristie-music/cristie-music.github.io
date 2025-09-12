@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /index.html
+Allow: /$
+Disallow: /hell.html
+Disallow: /en.html
+Disallow: /hell_en.html
+Sitemap: https://cristie-music.github.io/sitemap.xml
