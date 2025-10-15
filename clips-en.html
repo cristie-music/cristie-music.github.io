@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristie - Music Videos | Cristie Baltika Play Queen</title>
+    <meta name="description" content="Cristie's music videos - experimental musician and composer. Cristie Baltika Play Queen. Music videos and visual art.">
+    <meta name="keywords" content="Cristie music videos, Cristie Baltika Play Queen, cristie_music, music videos, visual art">
+    <meta name="author" content="Cristie">
+    <meta property="og:title" content="Cristie - Music Videos">
+    <meta property="og:description" content="Music videos and visual content by experimental musician Cristie">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cristie-music.github.io/clips-en" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            opacity: 0.8;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .artist-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .artist-image:hover {
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .clips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .clip-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .clip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .clip-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .clip-description {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 15px;
+        }
+
+        .social-links {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+        }
+        
+        .social-links h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .language-switcher a {
+            color: #3498db;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .clips-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .clips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .clip-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <a href="clips.html" title="Russian version">
+            <span class="flag">🇷🇺</span> RU
+        </a>
+    </div>
+    
+    <div class="container">
+        <div class="content">
+            <a href="en.html" class="back-link">← Back to Main Page</a>
+            
+            <div class="header">
+                <h1>Cristie - Music Videos</h1>
+                <img src="artist2.png" alt="Artist photo" class="artist-image">
+                <h2>Visual embodiment of music and emotions</h2>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Music Videos</div>
+                <div class="section-content">
+                    <p>Here you'll find my music videos - visual stories that complement my music and help you dive deeper into the atmosphere of each composition. Every video is a separate story filled with emotions and meanings.</p>
+                </div>
+
+                <div class="clips-grid">
+                    <div class="clip-card">
+                        <div class="clip-title">TWINS</div>
+                        <div class="video-container">
+                            <iframe src="https://streamable.com/e/8idsmd" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="clip-description">
+                            First full-length music video with a horror storyline
+                        </div>
+                    </div>
+
+                    <div class="clip-card">
+                        <div class="clip-title">Parasite - Bashee Cover</div>
+                        <div class="video-container">
+                            <iframe src="https://streamable.com/e/a8i55o" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="clip-description">
+                            Cover of Bashee's composition with my visualization
+                        </div>
+                    </div>
+
+                    <div class="clip-card">
+                        <div class="clip-title">Crawl Away</div>
+                        <div class="video-container">
+                            <iframe src="https://streamable.com/e/r329iv" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="clip-description">
+                            A very personal video
+                        </div>
+                    </div>
+
+                    <div class="clip-card">
+                        <div class="clip-title">DeathbyRomy - CRASH (Cover by Cristie)</div>
+                        <div class="video-container">
+                            <iframe src="https://streamable.com/e/35r2ym" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="clip-description">
+                            Cover of DeathbyRomy's composition in my interpretation
+                        </div>
+                    </div>
+
+                    <div class="clip-card">
+                        <div class="clip-title">AI Girlfriend</div>
+                        <div class="video-container">
+                            <iframe src="https://streamable.com/e/264usq" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="clip-description">
+                            Video about how robots will replace us. Just kidding! Or not?
+                        </div>
+                    </div>
+
+                    <div class="clip-card">
+                        <div class="clip-title">🎌 Russian Samurai Girl</div>
+                        <div class="video-container">
+                            <iframe src="https://streamable.com/e/025f5t" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="clip-description">
+                            Find all 22 references! Ironic video about beer
+                        </div>
+                    </div>
+
+                    <div class="clip-card">
+                        <div class="clip-title">EIVØR - Tokuni (Cover)</div>
+                        <div class="video-container">
+                            <iframe src="https://streamable.com/e/dxq1ju" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="clip-description">
+                            Cover of EIVØR's composition with atmospheric visualization
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">About Video Creation</div>
+                <div class="section-content">
+                    <p>Each video is the result of extensive work: from writing the script and describing scenes to selecting visual style and editing. I use modern tools, including neural networks, to create a unique atmosphere that perfectly complements the music.</p>
+                    <p>I enjoy the process of creating music videos - it's an opportunity to express a song not only through sound but also through images, emotions, and meanings that I put into my compositions.</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <h3>More Content</h3>
+                <p>Follow for new videos and updates on social media</p>
+                <div style="margin-top: 20px;">
+                    <a href="https://www.youtube.com/@Cristie_music" style="color: #3498db; text-decoration: none; margin: 0 10px;" target="_blank">YouTube</a>
+                    <a href="https://www.instagram.com/cristie_music/" style="color: #3498db; text-decoration: none; margin: 0 10px;" target="_blank">Instagram</a>
+                    <a href="https://www.threads.com/@cristie_music" style="color: #3498db; text-decoration: none; margin: 0 10px;" target="_blank">Threads</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
