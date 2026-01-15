@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cristie: В АД и без меня</title>
+    <style>
+        html, body { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            font-family: 'Courier New', Courier, monospace; 
+        }
+
+        .game-wrapper {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        canvas { 
+            display: block; 
+            border: 2px solid #333; 
+            background: #000;
+        }
+
+        #ui { 
+            position: absolute; 
+            top: 15px;
+            left: 15px;
+            color: white; 
+            text-shadow: 2px 2px #000; 
+            font-weight: bold; 
+            z-index: 10; 
+            pointer-events: none; 
+        }
+
+        .stat { margin-right: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="game-wrapper">
+        <div id="ui">
+            <span class="stat">LIVES: <span id="hearts" style="color: red; font-size: 24px;">❤️❤️❤️</span></span>
+            <span class="stat">LEVEL: <span id="lvlDisplay">1</span></span>
+            <span class="stat">SCORE: <span id="score">0</span></span><br>
+            <span style="font-size: 14px; opacity: 0.8;">[Space] Прыжок | [Z] Катана | [X] Огонь</span>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = 1280;
+canvas.height = 720;
+
+const STATE = { MENU: 0, LOADING: 1, PLAYING: 2, GAMEOVER: 3 };
+let currentState = STATE.MENU;
+
+// --- ЗВУК ---
+const bgMusic = new Audio('game.wav');
+bgMusic.loop = true;
+bgMusic.volume = 0.5;
+
+// Ресурсы
+const images = {};
+function loadImg(name, src) {
+    images[name] = new Image();
+    images[name].src = src;
+}
+
+loadImg('menu', 'menu.jpeg');
+loadImg('gameover', 'game-over.jpeg');
+loadImg('vid', 'VID-cover.png');
+loadImg('player', 'cristie.png');
+loadImg('demon', 'demon.png');
+loadImg('pennywise', 'pennywise.png');
+loadImg('pter', 'pter.png');
+
+const levelFiles = [
+    'level1.jpg', 'level2-1.jpg', 'level2-2.jpg', 
+    'level3-1.jpg', 'level3-2.jpg', 'level4.jpg', 
+    'level5.jpg', 'level6.jpg', 'level7.jpg', 
+    'level8.jpg', 'level9.jpg', 'level10.jpg'
+];
+levelFiles.forEach((file, index) => loadImg('lvl' + index, file));
+
+const player = {
+    x: 150, y: 500, w: 130, h: 130,
+    vy: 0, gravity: 0.8, jumpPower: -20,
+    isJumping: false, state: 'RUN', frame: 0, animTick: 0,
+    lives: 3, invincible: 0,
+    animations: {
+        RUN: [{sx: 10, sy: 10, sw: 80, sh: 85}, {sx: 100, sy: 10, sw: 80, sh: 85}, {sx: 190, sy: 10, sw: 80, sh: 85}],
+        JUMP: {sx: 110, sy: 110, sw: 85, sh: 95},
+        ATTACK: [{sx: 305, sy: 110, sw: 100, sh: 115}, {sx: 305, sy: 110, sw: 120, sh: 115}, {sx: 525, sy: 110, sw: 90, sh: 115}],
+        SHOOT: {sx: 310, sy: 235, sw: 105, sh: 85},
+        DEAD: {sx: 480, sy: 250, sw: 120, sh: 75}
+    }
+};
+
+let enemies = [];
+let bullets = [];
+let items = [];
+let gameTick = 0;
+let score = 0;
+let bgX = 0;
+const levelThreshold = 4000;
+
+function resetGame() {
+    player.lives = 3; score = 0; enemies = []; bullets = []; items = [];
+    player.state = 'RUN'; player.y = 500; gameTick = 0; bgX = 0;
+    updateHeartsUI();
+}
+
+function updateHeartsUI() {
+    const hearts = "❤️".repeat(Math.max(0, player.lives));
+    document.getElementById('hearts').innerText = hearts || "💀";
+}
+
+function spawnBeer() {
+    items.push({ x: canvas.width, y: 400 + Math.random() * 100, w: 40, h: 70, speed: 5 });
+}
+
+function spawnEnemy() {
+    const rand = Math.random();
+    let type, spriteData, startY, isFlying = false;
+    let currentLvl = Math.floor(score / levelThreshold);
+
+    if (rand < 0.33) { type = 'demon'; spriteData = { sx: 180, sy: 50, sw: 240, sh: 250 }; startY = 500; } 
+    else if (rand < 0.66) { type = 'pennywise'; spriteData = { sx: 220, sy: 30, sw: 180, sh: 280 }; startY = 500; } 
+    else { type = 'pter'; spriteData = { sx: 50, sy: 50, sw: 500, sh: 250 }; startY = 200 + Math.random() * 150; isFlying = true; }
+
+    enemies.push({ 
+        x: canvas.width, y: startY, baseY: startY, w: 130, h: 130, type: type, sprite: spriteData,
+        isFlying: isFlying, speed: (isFlying ? 10 : 8) + (currentLvl * 1.5) + (score / 10000),
+        vy: 0, gravity: 0.6, jumpPower: -10 - Math.random() * 12, ground: 500, phase: Math.random() * Math.PI * 2
+    });
+}
+
+function update() {
+    if (currentState !== STATE.PLAYING) return;
+    gameTick++;
+    bgX -= (4 + Math.floor(score / 10000));
+    if (bgX <= -canvas.width) bgX = 0;
+    if (player.invincible > 0) player.invincible--;
+
+    player.vy += player.gravity; player.y += player.vy;
+    if (player.y > 500) { player.y = 500; player.vy = 0; player.isJumping = false; if(player.state==='JUMP') player.state='RUN'; }
+
+    player.animTick++;
+    if (player.animTick % 10 === 0) {
+        player.frame++;
+        if ((player.state === 'ATTACK' || player.state === 'SHOOT') && player.frame >= 3) player.state = 'RUN';
+    }
+
+    let currentLvl = Math.floor(score / levelThreshold);
+    let spawnDifficulty = Math.max(15, 70 - (currentLvl * 8)); 
+    
+    if (gameTick % spawnDifficulty === 0) spawnEnemy();
+    if (gameTick % 450 === 0) spawnBeer();
+
+    items.forEach((item, index) => {
+        item.x -= item.speed;
+        if (item.x < player.x + 80 && item.x + item.w > player.x + 20 && item.y < player.y + player.h && item.y + item.h > player.y) {
+            if (player.lives < 3) { player.lives++; updateHeartsUI(); }
+            items.splice(index, 1);
+        }
+        if (item.x < -100) items.splice(index, 1);
+    });
+
+    bullets.forEach((bullet, bIndex) => {
+        bullet.x += bullet.speed;
+        if (bullet.x > canvas.width) bullets.splice(bIndex, 1);
+        enemies.forEach((en, eIndex) => {
+            if (bullet.x < en.x + en.w && bullet.x + bullet.w > en.x && bullet.y < en.y + en.h && bullet.y + bullet.h > en.y) {
+                bullets.splice(bIndex, 1); enemies.splice(eIndex, 1); score += 500;
+            }
+        });
+    });
+
+    enemies.forEach((en, index) => {
+        en.x -= en.speed;
+        if (en.isFlying) en.y = en.baseY + Math.sin(gameTick / 15 + en.phase) * 60;
+        else {
+            en.vy += en.gravity; en.y += en.vy;
+            if (en.y >= en.ground) { en.y = en.ground; if (Math.random() < 0.03) en.vy = en.jumpPower; }
+        }
+        if (en.x < player.x + 90 && en.x + en.w > player.x + 30 && en.y < player.y + player.h && en.y + en.h > player.y) {
+            if (player.state === 'ATTACK') { enemies.splice(index, 1); score += 1000; } 
+            else if (player.invincible === 0) {
+                player.lives--; player.invincible = 60; updateHeartsUI();
+                if (player.lives <= 0) { currentState = STATE.GAMEOVER; player.state = 'DEAD'; }
+            }
+        }
+        if (en.x < -200) enemies.splice(index, 1);
+    });
+    score++;
+    
+    document.getElementById('score').innerText = Math.floor(score / 10);
+    document.getElementById('lvlDisplay').innerText = currentLvl + 1;
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (currentState === STATE.MENU) {
+        if(images.menu.complete && images.menu.naturalWidth !== 0) 
+            ctx.drawImage(images.menu, 0, 0, canvas.width, canvas.height);
+        drawText("В АД И БЕЗ МЕНЯ", 60, canvas.height/2 - 50, canvas.width/2 - 250);
+        drawText("Нажми ПРОБЕЛ для старта", 25, canvas.height/2 + 50, canvas.width/2 - 180);
+    } 
+    else if (currentState === STATE.LOADING) {
+        if(images.vid.complete && images.vid.naturalWidth !== 0) 
+            ctx.drawImage(images.vid, 0, 0, canvas.width, canvas.height);
+        drawText("ЗАГРУЗКА АДА...", 40, canvas.height - 100, 100);
+    }
+    else if (currentState === STATE.PLAYING) {
+        let currentLvl = Math.floor(score / levelThreshold);
+        let levelIndex = currentLvl % levelFiles.length;
+        let bg = images['lvl' + levelIndex];
+        
+        if (bg && bg.complete && bg.naturalWidth !== 0) {
+            ctx.drawImage(bg, bgX, 0, canvas.width, canvas.height);
+            ctx.drawImage(bg, bgX + canvas.width, 0, canvas.width, canvas.height);
+        }
+
+        items.forEach(item => {
+            ctx.fillStyle = "#4B2C20";
+            ctx.fillRect(item.x + 10, item.y + 20, item.w - 20, item.h - 20);
+            ctx.fillRect(item.x + 15, item.y, 10, 25);
+            ctx.fillStyle = "#FFD700";
+            ctx.fillRect(item.x + 15, item.y, 10, 5);
+            ctx.fillStyle = "#008000";
+            ctx.fillRect(item.x + 10, item.y + 35, item.w - 20, 15);
+        });
+
+        ctx.fillStyle = "#FF4500";
+        bullets.forEach(bullet => { ctx.beginPath(); ctx.arc(bullet.x, bullet.y, bullet.w/2, 0, Math.PI * 2); ctx.fill(); });
+
+        enemies.forEach(en => {
+            let img = images[en.type];
+            if (img && img.complete && img.naturalWidth !== 0) 
+                ctx.drawImage(img, en.sprite.sx, en.sprite.sy, en.sprite.sw, en.sprite.sh, en.x, en.y, en.w, en.h);
+        });
+
+        if (player.invincible % 10 < 5) {
+            let s = player.state === 'RUN' ? player.animations.RUN[player.frame % 3] :
+                    player.state === 'JUMP' ? player.animations.JUMP :
+                    player.state === 'ATTACK' ? player.animations.ATTACK[player.frame % 3] :
+                    player.state === 'SHOOT' ? player.animations.SHOOT : player.animations.DEAD;
+            if (images.player.complete && images.player.naturalWidth !== 0) 
+                ctx.drawImage(images.player, s.sx, s.sy, s.sw, s.sh, player.x, player.y, player.w, player.h);
+        }
+    }
+    else if (currentState === STATE.GAMEOVER) {
+        if(images.gameover.complete && images.gameover.naturalWidth !== 0) 
+            ctx.drawImage(images.gameover, 0, 0, canvas.width, canvas.height);
+        drawText("GAME OVER", 80, canvas.height/2, canvas.width/2 - 200);
+        drawText("Нажми R для воскрешения", 30, canvas.height/2 + 100, canvas.width/2 - 180);
+    }
+    requestAnimationFrame(() => { update(); draw(); });
+}
+
+function drawText(t, s, y, x) { ctx.fillStyle = "white"; ctx.font = s + "px Courier New"; ctx.fillText(t, x, y); }
+
+window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+        if (currentState === STATE.MENU) { 
+            // ЗАПУСК МУЗЫКИ
+            bgMusic.play().catch(e => console.log("Музыка заблокирована браузером"));
+            
+            currentState = STATE.LOADING; 
+            setTimeout(() => { currentState = STATE.PLAYING; resetGame(); }, 1500); 
+        }
+        else if (!player.isJumping && currentState === STATE.PLAYING) { 
+            player.vy = player.jumpPower; player.isJumping = true; player.state = 'JUMP'; 
+        }
+    }
+    if (currentState === STATE.PLAYING) {
+        if (e.code === 'KeyZ') { player.state = 'ATTACK'; player.frame = 0; }
+        if (e.code === 'KeyX') { 
+            player.state = 'SHOOT'; player.frame = 0; 
+            bullets.push({ x: player.x + 95, y: player.y + 65, w: 15, h: 15, speed: 20 });
+        }
+    }
+    if (e.code === 'KeyR' && currentState === STATE.GAMEOVER) {
+        currentState = STATE.LOADING;
+        setTimeout(() => { currentState = STATE.PLAYING; resetGame(); }, 1000);
+    }
+});
+
+draw();
+</script>
+</body>
+</html>
