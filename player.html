@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristie - Digital Player</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <link rel="apple-touch-icon" href="artist2.png">
+    
+    <style>
+        :root {
+            --accent: #3498db;
+            --glass: rgba(255, 255, 255, 0.9);
+            --text: #2c3e50;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Главный контейнер */
+        .player-app {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        /* Левая панель: Плеер */
+        .player-main {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .cover-art {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            transition: transform 0.5s ease;
+        }
+
+        .track-info h1 { font-size: 1.8em; margin-bottom: 5px; text-align: center; }
+        .track-info p { color: #7f8c8d; font-style: italic; margin-bottom: 25px; text-align: center; }
+
+        /* Управление */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+        .btn:hover { color: var(--accent); }
+        .play-btn { font-size: 50px; }
+
+        /* Прогресс-бар */
+        .progress-area {
+            width: 100%;
+            max-width: 400px;
+        }
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+        .time-stamps {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Правая панель: Библиотека */
+        .library {
+            background: rgba(0, 0, 0, 0.03);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .artist-mini {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .artist-mini img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .track-list {
+            list-style: none;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .track-item {
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .track-item:hover, .track-item.active {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent);
+        }
+
+        .install-btn {
+            margin-top: auto;
+            padding: 10px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            display: none; /* Покажется через JS */
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 768px) {
+            .player-app { grid-template-columns: 1fr; }
+            .player-main { padding: 20px; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
+            .cover-art { width: 200px; height: 200px; }
+            .library { max-height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-app">
+        <main class="player-main">
+            <img src="artist2.png" id="cover" class="cover-art" alt="Обложка">
+            <div class="track-info">
+                <h1 id="title">Название трека</h1>
+                <p id="artist">Cristie</p>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" onclick="prevTrack()">⏮</button>
+                <button class="btn play-btn" id="playPause" onclick="togglePlay()">▶</button>
+                <button class="btn" onclick="nextTrack()">⏭</button>
+                <button class="btn" id="repeatBtn" onclick="toggleRepeat()">🔁</button>
+            </div>
+
+            <div class="progress-area">
+                <input type="range" id="progress" value="0" min="0" step="1">
+                <div class="time-stamps">
+                    <span id="current">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+        </main>
+
+        <aside class="library">
+            <div class="artist-mini">
+                <img src="artist2.png" alt="Cristie">
+                <div>
+                    <strong>Cristie</strong>
+                    <div style="font-size: 12px; color: gray;">Экспериментальный музыкант</div>
+                </div>
+            </div>
+            
+            <h3 style="margin-bottom: 15px;">Мои треки</h3>
+            <ul class="track-list" id="playlist">
+                </ul>
+
+            <button class="install-btn" id="installApp">Установить как приложение</button>
+        </aside>
+    </div>
+
+    <audio id="audio"></audio>
+
+    <script>
+        // --- КОНФИГУРАЦИЯ ТРЕКОВ ---
+        const musicConfig = [
+            {
+                title: "Sad Demon",
+                artist: "Cristie_music",
+                file: "songs/1Sad_Demon.mp3",
+                cover: "song1.jpg",
+                album: "В АД и без меня"
+            },
+            {
+                title: "Маска Фантазма",
+                artist: "Cristie_music",
+                file: "songs/2Phantasm.mp3",
+                cover: "song2.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Пеннивайз",
+                artist: "Cristie_music",
+                file: "songs/3Pennywise.mp3",
+                cover: "song3.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Спокойной ночи трупики!",
+                artist: "Cristie_music",
+                file: "songs/4good_night.mp3",
+                cover: "song4.jpg",
+                album: "В АД и без меня"
+            },      
+            {
+                title: "Круги (Circles)",
+                artist: "Cristie_music",
+                file: "songs/5Circles.mp3",
+                cover: "song5.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Тень",
+                artist: "Cristie_music",
+                file: "songs/6shadow.mp3",
+                cover: "song6.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Demon inside",
+                artist: "Cristie_music",
+                file: "songs/7Demon_inside.mp3",
+                cover: "song7.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Балтика Play Квин",
+                artist: "Cristie_music",
+                file: "songs/8play_queen.mp3",
+                cover: "song8.jpg",
+                album: "В АД и без меня"
+            },  
+            {
+                title: "Careless",
+                artist: "Cristie_music",
+                file: "songs/9Careless_EDM.mp3",
+                cover: "song9.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Эйфория",
+                artist: "Cristie_music",
+                file: "songs/10Love_Euphoria.mp3",
+                cover: "song10.jpg",
+                album: "В АД и без меня"
+            },  
+            {
+                title: "Sad demon (альтернативная версия)",
+                artist: "Cristie_music",
+                file: "songs/11Sad_demon_Alternative.mp3",
+                cover: "song11.jpg",
+                album: "В АД и без меня"
+            },    
+            {
+                title: "Careless (альтернативная версия)",
+                artist: "Cristie_music",
+                file: "songs/12Сareless.mp3",
+                cover: "song12.jpg",
+                album: "В АД и без меня"
+            },  
+            {
+                title: "Elements (Riverline Cover)",
+                artist: "Cristie_music",
+                file: "songs/13Elements_Riverline.mp3",
+                cover: "song13.jpg",
+                album: "В АД и без меня"
+            },     
+            {
+                title: "Numb (Linkin park Cover)",
+                artist: "Cristie_music",
+                file: "songs/14Numb_Linkin_park.mp3",
+                cover: "song14.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Parasite (Banshee Cover)",
+                artist: "Cristie_music",
+                file: "songs/15Parasite_Banshee.mp3",
+                cover: "song15.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Crash (DeathbyRomy Cover)",
+                artist: "Cristie_music",
+                file: "songs/16Crash_DeathbyRomy.mp3",
+                cover: "song16.jpg",
+                album: "В АД и без меня"
+            },   
+            {
+                title: "Коллекционер (Deadушки Cover)",
+                artist: "Cristie_music",
+                file: "songs/17Collector.mp3",
+                cover: "song17.jpg",
+                album: "В АД и без меня"
+            },                                                                                                                                                                  
+            {
+                title: "Подземная любовь",
+                artist: "Cristie_music",
+                file: "songs/metro.wav",
+                cover: "metro-cover-3.png",
+                album: "Single"
+            },
+            {
+                title: "Crawl Away",
+                artist: "Cristie_music",
+                file: "songs2/crawl.wav",
+                cover: "crawl-away-cover.png" // Если альбома нет
+            }
+        ];
+
+        let currentIdx = 0;
+        let isRepeat = false;
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('playPause');
+        const progress = document.getElementById('progress');
+
+        // Инициализация плейлиста
+        function initPlaylist() {
+            const list = document.getElementById('playlist');
+            musicConfig.forEach((track, index) => {
+                const li = document.createElement('li');
+                li.className = 'track-item';
+                li.innerHTML = `<span>${track.title}</span> <small>${track.album || 'Single'}</small>`;
+                li.onclick = () => loadTrack(index);
+                list.appendChild(li);
+            });
+            loadTrack(0);
+        }
+
+        function loadTrack(index) {
+            currentIdx = index;
+            const track = musicConfig[index];
+            document.getElementById('title').innerText = track.title;
+            document.getElementById('artist').innerText = track.artist;
+            document.getElementById('cover').src = track.cover;
+            audio.src = track.file;
+            
+            // Подсветка активного
+            document.querySelectorAll('.track-item').forEach((el, i) => {
+                el.classList.toggle('active', i === index);
+            });
+            
+            if (index !== 0) togglePlay(true);
+        }
+
+        function togglePlay(forcePlay = false) {
+            if (audio.paused || forcePlay) {
+                audio.play();
+                playBtn.innerText = '⏸';
+            } else {
+                audio.pause();
+                playBtn.innerText = '▶';
+            }
+        }
+
+        function nextTrack() {
+            currentIdx = (currentIdx + 1) % musicConfig.length;
+            loadTrack(currentIdx);
+        }
+
+        function prevTrack() {
+            currentIdx = (currentIdx - 1 + musicConfig.length) % musicConfig.length;
+            loadTrack(currentIdx);
+        }
+
+        function toggleRepeat() {
+            isRepeat = !isRepeat;
+            document.getElementById('repeatBtn').style.color = isRepeat ? 'var(--accent)' : 'inherit';
+        }
+
+        // Логика прогресса
+        audio.ontimeupdate = () => {
+            progress.max = audio.duration;
+            progress.value = audio.currentTime;
+            document.getElementById('current').innerText = formatTime(audio.currentTime);
+            document.getElementById('duration').innerText = formatTime(audio.duration);
+        };
+
+        progress.oninput = () => audio.currentTime = progress.value;
+
+        audio.onended = () => isRepeat ? audio.play() : nextTrack();
+
+        function formatTime(sec) {
+            if (isNaN(sec)) return "0:00";
+            let min = Math.floor(sec / 60);
+            let s = Math.floor(sec % 60);
+            return `${min}:${s < 10 ? '0' + s : s}`;
+        }
+
+        // --- PWA INSTALL LOGIC ---
+        let deferredPrompt;
+        const installBtn = document.getElementById('installApp');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'block';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') installBtn.style.display = 'none';
+                deferredPrompt = null;
+            }
+        });
+
+        initPlaylist();
+
+        
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker зарегистрирован!', reg))
+            .catch(err => console.log('Ошибка регистрации SW:', err));
+    });
+}        
+    </script>
+</body>
+</html>
