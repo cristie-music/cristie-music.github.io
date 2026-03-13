@@ -79,13 +79,19 @@
         }
 
         .btn {
-            background: none;
-            border: none;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
             cursor: pointer;
             font-size: 32px;
-            color: var(--text) !important;
-            transition: transform 0.2s;
+            color: var(--text) !important; /* Принудительно черный/темный цвет */
+            transition: transform 0.2s, opacity 0.2s;
             outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-appearance: none;
+            appearance: none;
         }
         .btn:active { transform: scale(0.9); }
         .play-btn { font-size: 60px; line-height: 1; }
@@ -164,6 +170,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: 0.3s;
         }
+        .album-card:hover { transform: translateX(5px); }
         .album-card img { width: 65px; height: 65px; border-radius: 8px; object-fit: cover; }
         .section-label { font-size: 0.8em; text-transform: uppercase; color: var(--subtext); margin: 20px 0 10px; font-weight: bold; display: block; }
 
@@ -186,10 +193,10 @@
             </div>
             
             <div class="controls">
-                <button class="btn" onclick="prevTrack()">⏮</button>
-                <button class="btn play-btn" id="playPause" onclick="togglePlay()">▶</button>
-                <button class="btn" onclick="nextTrack()">⏭</button>
-                <button class="btn" id="repeatBtn" onclick="toggleRepeat()">🔁</button>
+                <button class="btn" onclick="prevTrack()">⏮&#xFE0E;</button>
+                <button class="btn play-btn" id="playPause" onclick="togglePlay()">▶&#xFE0E;</button>
+                <button class="btn" onclick="nextTrack()">⏭&#xFE0E;</button>
+                <button class="btn" id="repeatBtn" onclick="toggleRepeat()">🔁&#xFE0E;</button>
             </div>
 
             <div class="progress-area">
@@ -240,7 +247,7 @@
             { title: "Crash (Cover)", artist: "Cristie_music", file: "songs/16Crash_DeathbyRomy.mp3", cover: "song16.jpg", album: "В АД и без меня" },
             { title: "Коллекционер (Cover)", artist: "Cristie_music", file: "songs/17Collector.mp3", cover: "song17.jpg", album: "В АД и без меня" },
             { title: "Careless", artist: "Cristie_music", file: "songs4/1Careless.wav", cover: "glubina.jpg", album: "Глубина" },
-            { title: "Sad demon (alt.)", artist: "Cristie_music", file: "songs4/2Saddemonver-2.wav", cover: "glubina.jpg", album: "Глубина" },
+            { title: "Sad demon (alt. v2)", artist: "Cristie_music", file: "songs4/2Saddemonver-2.wav", cover: "glubina.jpg", album: "Глубина" },
             { title: "В Другой Жизни", artist: "Cristie_music", file: "songs4/3InAnotherLife.wav", cover: "glubina.jpg", album: "Глубина" },
             { title: "Не отпущу", artist: "Cristie_music", file: "songs4/4Не-отпущу.wav", cover: "glubina.jpg", album: "Глубина" },
             { title: "Туман и крылья", artist: "Cristie_music", file: "songs4/5Туман-и-крылья.wav", cover: "glubina.jpg", album: "Глубина" }
@@ -364,12 +371,19 @@
         }
 
         function togglePlay(forcePlay = false) {
-            if (audio.paused || forcePlay) { audio.play(); playBtn.innerText = '⏸'; }
-            else { audio.pause(); playBtn.innerText = '▶'; }
+            if (audio.paused || forcePlay) { 
+                audio.play(); 
+                playBtn.innerHTML = '⏸&#xFE0E;'; // Иконка паузы
+            }
+            else { 
+                audio.pause(); 
+                playBtn.innerHTML = '▶&#xFE0E;'; // Иконка плея
+            }
         }
 
         function nextTrack() { currentIdx = (currentIdx + 1) % musicConfig.length; loadTrack(currentIdx); }
         function prevTrack() { currentIdx = (currentIdx - 1 + musicConfig.length) % musicConfig.length; loadTrack(currentIdx); }
+        
         function toggleRepeat() {
             isRepeat = !isRepeat;
             document.getElementById('repeatBtn').style.opacity = isRepeat ? '1' : '0.4';
@@ -396,5 +410,4 @@
         togglePlay(false);
     </script>
 </body>
-
 </html>
