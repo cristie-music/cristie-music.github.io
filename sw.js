@@ -4,7 +4,7 @@ const ASSETS = [
   'player.html',
   'manifest.json',
   'background.jpg',
-  'artist2.png',
+  'artist3.png',
   'index.html'
 ];
 
