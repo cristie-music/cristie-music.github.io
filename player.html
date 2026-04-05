@@ -235,7 +235,7 @@
 
     <audio id="audio"></audio>
 
-    <script>
+<script>
         const musicConfig = [
             { title: "Twins", artist: "Cristie_music", file: "songs3/1-Twins.wav", cover: "scary-tales.jpeg", album: "Страшные сказки" },
             { title: "Тихий лес", artist: "Cristie_music", file: "songs3/2-les.wav", cover: "scary-tales.jpeg", album: "Страшные сказки" },
@@ -375,6 +375,23 @@
             document.getElementById('title').innerText = track.title;
             document.getElementById('cover').src = track.cover;
             audio.src = track.file;
+
+            // Интеграция с Media Session API (системная шторка)
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: track.title,
+                    artist: track.artist,
+                    album: track.album || 'Single',
+                    artwork: [
+                        { src: track.cover, sizes: '96x96', type: 'image/jpeg' },
+                        { src: track.cover, sizes: '128x128', type: 'image/jpeg' },
+                        { src: track.cover, sizes: '192x192', type: 'image/jpeg' },
+                        { src: track.cover, sizes: '256x256', type: 'image/jpeg' },
+                        { src: track.cover, sizes: '384x384', type: 'image/jpeg' },
+                        { src: track.cover, sizes: '512x512', type: 'image/jpeg' }
+                    ]
+                });
+            }
             
             if (currentView === 'tracks') {
                 renderAllTracks();
@@ -384,11 +401,9 @@
                 renderAlbums();
             }
             
-            // Если это автозапуск (например, при переключении трека), то играем
             if (isAutoPlay) {
                 togglePlay(true);
             } else {
-                // Если это первая загрузка, просто ставим иконку PLAY
                 playBtn.innerHTML = playIcon; 
             }
         }
@@ -399,11 +414,11 @@
         function togglePlay(forcePlay = false) {
             if (audio.paused || forcePlay) { 
                 audio.play(); 
-                playBtn.innerHTML = pauseIcon; // Ставим иконку паузы
+                playBtn.innerHTML = pauseIcon;
             }
             else { 
                 audio.pause(); 
-                playBtn.innerHTML = playIcon; // Ставим иконку плея
+                playBtn.innerHTML = playIcon;
             }
         }
 
@@ -431,8 +446,16 @@
             return `${min}:${s < 10 ? '0' + s : s}`;
         }
 
+        // Привязка системных кнопок к плееру
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.setActionHandler('play', () => togglePlay(true));
+            navigator.mediaSession.setActionHandler('pause', () => togglePlay(false));
+            navigator.mediaSession.setActionHandler('previoustrack', () => prevTrack());
+            navigator.mediaSession.setActionHandler('nexttrack', () => nextTrack());
+        }
+
         showView('tracks');
-        loadTrack(0, false); // Загружаем нулевой трек, но передаем false, чтобы он не заиграл сам
+        loadTrack(0, false); 
     </script>
 </body>
 </html>
