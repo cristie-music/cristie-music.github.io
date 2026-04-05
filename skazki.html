@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristie - Страшные Сказки | Cristie Baltika Play Квин</title>
+    <meta name="description" content="Новый EP Cristie - Страшные Сказки. Путешествие по чертогам страхов, воображения и реальности.">
+    <meta name="keywords" content="Cristie, Страшные Сказки, EP, Cristie Baltika Play Квин, cristie_music, новый альбом, дарк-поп">
+    <meta name="author" content="Cristie">
+    <meta property="og:title" content="Cristie - Страшные Сказки">
+    <meta property="og:description" content="Новый EP Cristie - Страшные Сказки. Путешествие по чертогам страхов, воображения и реальности.">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('skazki.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .artist-image2 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }        
+        
+        .artist-image:hover {
+            transform: scale(1.02);
+        }	
+
+        .artist-image2:hover {
+            transform: scale(1.02);
+        }        
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-style: italic;
+        }
+        
+        .toc {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .toc h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .toc a:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .section-content {
+            text-align: justify;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .section-content p {
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+        }
+        
+        .social-links h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .link-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+        
+        .link-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .link-card p {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section-content {
+                font-size: 1em;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .social-links {
+                padding: 20px;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .language-switcher a {
+            color: #3498db;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .quote {
+            font-style: italic;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 3px solid #3498db;
+        }
+
+        /* Стили для аудиоплеера */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2c3e50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            background: #3498db;
+            transform: scale(1.05);
+        }
+        
+        .progress-container {
+            flex-grow: 1;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress {
+            height: 100%;
+            background: #3498db;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .volume-icon {
+            margin-right: 10px;
+            color: #7f8c8d;
+        }
+        
+        .volume-slider {
+            width: 100px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border-radius: 2px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <a href="en.html" title="English version">
+            <span class="flag">🇬🇧</span> EN
+        </a>
+    </div>
+    
+    <div class="container" style="opacity: 0.8;">
+        <div class="content">
+            <a href="index.html" class="back-link">← Назад на главную</a>
+            
+            <div class="header">
+                <h1>Страшные Сказки</h1>
+                <img src="skazki.jpeg" alt="Обложка EP" class="artist-image">
+                <h2>Новый EP Cristie</h2>
+            </div>
+
+            <div class="section" id="streaming-main">
+                <div class="section-title" style="text-align: center;">Послушать</div>
+                <div class="section-content">
+                    <div class="links-grid">
+                        <div class="link-card">
+                            <h4>Bandcamp</h4>
+                            <img src="bandcamp-button-bc-circle-aqua-256.png" alt="Bandcamp" class="artist-image2">
+                            <a href="https://cristiemusic.bandcamp.com" target="_blank">Bandcamp</a>
+                            <p>(Основная площадка, самые свежие треки и демо)</p>
+                        </div>
+                        
+                        <div class="link-card">
+                            <h4>BandLab</h4>
+                            <img src="67862-BandLab_Icon_Red.png" alt="BandLab" class="artist-image2">
+                            <a href="https://www.bandlab.com/cristie_baltika" target="_blank">BandLab</a>
+                            <p>(Вторая площадка, самые свежие треки и демо)</p>
+                        </div>
+                    </div>
+
+                    <div class="links-grid">
+                        <div class="link-card">
+                            <h4>Яндекс Музыка</h4>
+                            <img src="yandex-music-new.png" alt="Яндекс музыка" class="artist-image2">
+                            <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" target="_blank">Яндекс Музыка</a>
+                        </div>
+                        
+                        <div class="link-card">
+                            <h4>YouTube Music</h4>
+                            <img src="YouTube_full-color_icon_(2017).svg.png" alt="YouTube Music" class="artist-image2">                            
+                            <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" target="_blank">YouTube Music</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="toc">
+                <h3>Содержание</h3>
+                <ul>
+                    <li><a href="#about">О чем этот EP?</a></li>
+                    <li><a href="#track-twins">Twins</a></li>
+                    <li><a href="#track-les">Тихий лес</a></li>
+                    <li><a href="#track-tales">Страшные сказки</a></li>
+                    <li><a href="#track-theater">Театр</a></li>
+                    <li><a href="#track-poroki">Пороки</a></li>
+                    <li><a href="#conclusion">Заключение</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="about">
+                <div class="section-title">О чем этот EP?</div>
+                <div class="section-content">
+                    <p>Это путешествие, где мы с тобой гуляем по страшному лесу, ночью. Но ты не бойся, тут не опасно.</p>
+                    <p>Мы будем смотреть на разные опушки и избушки, откроем разные двери и покопаемся в чертогах наших страхов и воображения. Этот EP качает нас на волне и накрывает в конце.</p>
+                    <div class="quote">
+                        <p>С чего начать?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="track-twins">
+                <div class="section-title">Twins</div>
+                <div class="section-content">
+                    <p>Мы начинаем с Twins.</p>
+                    <p>Знакомая вам песня, но о чем она?</p>
+                    <p>Мы видим Кристину, она жертва, но это не просто трек про раздвоение личности. Он про рождение зла, про девочку, которая не выбирала, ей просто не повезло, ее просто сломало.</p>
+                    <p>Ее психика сломалась и адаптировалась. Она создала Алису, сильную, кровожадную, без страха и полную ненависти и мести. Ее главная миссия - защищать невинную Кристину, она тот самый невидимый щит, который никогда не отпустит контроль.</p>
+                    
+                    <div class="audio-player">
+                        <div class="player-controls">
+                            <button class="play-btn">▶</button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <span class="current-time">0:00</span>
+                            <span class="duration">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <span class="volume-icon">🔊</span>
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <audio src="songs3/1-Twins.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="track-les">
+                <div class="section-title">Тихий лес</div>
+                <div class="section-content">
+                    <p>Но у любой стороны две медали, и мы переходим к треку Тихий лес. Он тоже вам уже знаком.</p>
+                    <p>Да, это продолжение, и оно вроде как шутка? Сама песня довольно позитивная. Это фантазия, когда встретились две хищные рыбы, но одна крупнее, страшнее, мрачнее. Тут мы видим не просто безумную Кристину и Алису, вы видим что даже зло в этом мире, может быть на стороне добра.</p>
+                    <p>И отсюда вопрос, а зло ли Кристина? И был ли у нее выбор?</p>
+                    
+                    <div class="audio-player">
+                        <div class="player-controls">
+                            <button class="play-btn">▶</button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <span class="current-time">0:00</span>
+                            <span class="duration">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <span class="volume-icon">🔊</span>
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <audio src="songs3/2-les.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="track-tales">
+                <div class="section-title">Страшные сказки</div>
+                <div class="section-content">
+                    <p>Плывём дальше..</p>
+                    <p>Трек страшные сказки..</p>
+                    <p>Я уже писала, что меня в детстве не вставлял Дисней, принцессы, принцы..</p>
+                    <p>А кто были прародители этих сказок?</p>
+                    <p>Ведь даже в Диснеевских мультиках есть вопросы. Почему принц не запомнил Золушку? Почему спящая красавица проснулась от поцелуя и поняла что он тот самый? А русалочка, которая отдала голос? Даже не зная какой он? Какие это показывает ценности? Вопросики..</p>
+                    <p>Тут мы окунемся в оригиналы и там правда крови - литры, без цензуры, без прикрас..</p>
+                    
+                    <div class="audio-player">
+                        <div class="player-controls">
+                            <button class="play-btn">▶</button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <span class="current-time">0:00</span>
+                            <span class="duration">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <span class="volume-icon">🔊</span>
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <audio src="songs3/3-tales.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="track-theater">
+                <div class="section-title">Театр</div>
+                <div class="section-content">
+                    <p>Теперь по плану у нас реальность, театр..</p>
+                    <p>Этот трек намеренно состарен вначале, начало играет с виниловой пластинки, пыльной, поцарапанной. А что если человек и при жизни может быть монстром? Мы окунемся в мир алчной, безумно красивой, хитрой, холодной как лёд и острой как сталь актрисы театра.</p>
+                    <p>Она любила разрушать жизни, получала от этого истинное удовольствие, это был не просто выбор, это был вкус ее жизни.</p>
+                    <p>Но она забыла, что за все приходиться платить, и цена будет очень высока.</p>
+                    <p>Но остаётся вопрос, а стала ли она монстром? Стало ли это ее наказанием?</p>
+                    <p>Справедливо?</p>
+
+                    <div class="audio-player">
+                        <div class="player-controls">
+                            <button class="play-btn">▶</button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <span class="current-time">0:00</span>
+                            <span class="duration">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <span class="volume-icon">🔊</span>
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <audio src="songs3/4-theatr.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="track-poroki">
+                <div class="section-title">Пороки</div>
+                <div class="section-content">
+                    <p>Пороки. Самый темный трек альбома.</p>
+                    <p>Он накрывает нас волной и отсюда нет выхода. Мы можем только задержать дыхание и надеятся что мы выплывем.</p>
+                    <p>Этот трек я написала когда снова увидела памятник - Дети - жертвы пороков взрослых.</p>
+                    <p>Тот самый, мрачный на Болотной площади.</p>
+                    <p>Он отражает наши грехи и неидеальность этого мира. Его отражение страшнее любых сказок, ведь это реальность, наша реальность.</p>
+                    <p>Монстры живут не только в камне, но и внутри нас..</p>
+                    <p>И только мы делаем выбор - быть монстром или нет?</p>
+
+                    <div class="audio-player">
+                        <div class="player-controls">
+                            <button class="play-btn">▶</button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <span class="current-time">0:00</span>
+                            <span class="duration">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <span class="volume-icon">🔊</span>
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <audio src="songs3/5.poroki.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="conclusion">
+                <div class="section-title">Заключение</div>
+                <div class="section-content">
+                    <p>Этот EP имеет весёлый фасад и мрачный смысл. Он напоминает нам о том, что мир это шахматная доска, а мы фигуры и правила меняются каждый день. И только ты выбираешь - чёрное или белое?</p>
+                    <p>Только мы можем сделать этот мир лучше.</p>
+                    <p>Да, это экспериментальный EP.</p>
+                    <p>Это часть того как я вижу мир.</p>
+                    <p>Не всегда мрачно, нет, но это одна из призм.</p>
+                    <p>И моя миссия остаётся прежней - нивелировать зло, даже если это невозможно. Через слова, стихи, поддержку, музыку.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        // Функции для аудиоплеера
+        document.addEventListener('DOMContentLoaded', function() {
+            const audioPlayers = document.querySelectorAll('.audio-player');
+            
+            audioPlayers.forEach(player => {
+                const audio = player.querySelector('audio');
+                const playBtn = player.querySelector('.play-btn');
+                const progressContainer = player.querySelector('.progress-container');
+                const progressBar = player.querySelector('.progress');
+                const currentTimeEl = player.querySelector('.current-time');
+                const durationEl = player.querySelector('.duration');
+                const volumeSlider = player.querySelector('.volume-slider');
+                const volumeIcon = player.querySelector('.volume-icon');
+                
+                // Устанавливаем громкость по умолчанию
+                audio.volume = volumeSlider.value;
+                
+                // Функция форматирования времени
+                function formatTime(seconds) {
+                    if (isNaN(seconds)) return '0:00';
+                    let min = Math.floor(seconds / 60);
+                    let sec = Math.floor(seconds % 60);
+                    return min + ':' + (sec < 10 ? '0' + sec : sec);
+                }
+                
+                // Обновление информации о времени
+                function updateTime() {
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                    if (!isNaN(audio.duration)) {
+                        durationEl.textContent = formatTime(audio.duration);
+                    }
+                    
+                    // Обновление прогресса
+                    if (audio.duration) {
+                        const progressPercent = (audio.currentTime / audio.duration) * 100;
+                        progressBar.style.width = progressPercent + '%';
+                    }
+                }
+                
+                // Переключение воспроизведения/паузы
+                playBtn.addEventListener('click', function() {
+                    // Пауза всех остальных плееров
+                    audioPlayers.forEach(p => {
+                        const otherAudio = p.querySelector('audio');
+                        const otherBtn = p.querySelector('.play-btn');
+                        if (otherAudio !== audio && !otherAudio.paused) {
+                            otherAudio.pause();
+                            otherBtn.textContent = '▶';
+                        }
+                    });
+
+                    if (audio.paused) {
+                        audio.play();
+                        playBtn.textContent = '❚❚';
+                    } else {
+                        audio.pause();
+                        playBtn.textContent = '▶';
+                    }
+                });
+                
+                // Обновление прогресса при изменении времени
+                audio.addEventListener('timeupdate', updateTime);
+                
+                // Перемотка при клике на прогресс-бар
+                progressContainer.addEventListener('click', function(e) {
+                    const width = this.clientWidth;
+                    const clickX = e.offsetX;
+                    const duration = audio.duration;
+                    
+                    if (duration) {
+                        audio.currentTime = (clickX / width) * duration;
+                    }
+                });
+                
+                // Изменение громкости
+                volumeSlider.addEventListener('input', function() {
+                    audio.volume = this.value;
+                    
+                    // Изменение иконки в зависимости от громкости
+                    if (this.value == 0) {
+                        volumeIcon.textContent = '🔇';
+                    } else if (this.value < 0.5) {
+                        volumeIcon.textContent = '🔈';
+                    } else {
+                        volumeIcon.textContent = '🔊';
+                    }
+                });
+                
+                // Сброс времени при завершении воспроизведения
+                audio.addEventListener('ended', function() {
+                    playBtn.textContent = '▶';
+                    audio.currentTime = 0;
+                });
+                
+                // Обновление информации при загрузке аудио
+                audio.addEventListener('loadedmetadata', function() {
+                    durationEl.textContent = formatTime(audio.duration);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

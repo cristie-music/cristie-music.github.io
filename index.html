@@ -3,40 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cristie - Официальный сайт | Cristie Baltika Play Квин | cristie_music</title>
-    <meta name="description" content="Официальный сайт Cristie - экспериментального музыканта, композитора и дирижёра цифрового оркестра. Cristie Baltika Play Квин. Музыка, тексты, клипы и философия артиста.">
-    <meta name="keywords" content="Cristie, Cristie Baltika Play Квин, cristie_music, экспериментальная музыка, альтернативная музыка, музыкальный артист, певица, композитор, тексты песен, клипы, BandLab, Spotify, Яндекс музыка, YouTube Music, RVC, ИИ в музыке">
-    <meta name="author" content="Cristie">
-    <meta property="og:title" content="Cristie - Официальный сайт">
-    <meta property="og:description" content="Экспериментальный музыкант, композитор и дирижёр цифрового оркестра">
-    <meta property="og:type" content="website">    
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    <link rel="canonical" href="https://cristie-music.github.io/" />
-    <meta property="og:url" content="https://cristie-music.github.io/">    
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MusicGroup",
-  "name": "Cristie",
-  "description": "Экспериментальный музыкант, композитор и дирижёр цифрового оркестра",
-  "url": "https://cristie-music.github.io/",
-  "genre": ["Experimental", "Alternative"],
-  "image": "https://cristie-music.github.io/artist2.png",
-  "sameAs": [
-    "https://www.bandlab.com/sosiska_cristie",
-    "https://open.spotify.com/artist/4r2dxYMohCOpfdTIsea6zc",
-    "https://music.yandex.ru/artist/24387513",
-    "https://www.youtube.com/@Cristie_music",
-    "https://www.instagram.com/cristie_music/",
-    "https://www.threads.com/@cristie_music"
-  ]
-}
-</script>    
-
-
+    <title>Cristie - Главная страница | Навигация</title>
+    <meta name="description" content="Главная страница портала Cristie. Навигация по релизам, клипам, блогу и музыке экспериментального музыканта.">
+    
     <style>
+        /* =========================================
+           ОРИГИНАЛЬНЫЕ СТИЛИ САЙТА (БАЗА И ШАПКА)
+           ========================================= */
         * {
             margin: 0;
             padding: 0;
@@ -56,7 +29,7 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px; 
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -79,29 +52,10 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
         }
-
-        .artist-image2 {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 30px auto;
-            display: block;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }        
         
         .artist-image:hover {
             transform: scale(1.02);
-        }	
-
-        .artist-image2:hover {
-            transform: scale(1.02);
-        }        
-
-        .music-image:hover {
-            transform: scale(1.02);
-        }
+        }   
         
         .header {
             text-align: center;
@@ -122,761 +76,279 @@
             font-weight: normal;
             font-style: italic;
         }
-        
-        .toc {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            border-left: 5px solid #3498db;
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            font-weight: bold;
         }
-        
-        .toc h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            text-align: center;
-        }
-        
-        .toc ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .toc li {
-            margin-bottom: 8px;
-        }
-        
-        .toc a {
+
+        .language-switcher a {
             color: #3498db;
             text-decoration: none;
-            font-size: 1.1em;
-            display: block;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        
-        .toc a:hover {
-            background-color: rgba(52, 152, 219, 0.1);
-            text-decoration: underline;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-            scroll-margin-top: 20px;
-        }
-        
-        .section-title {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ecf0f1;
-        }
-        
-        .section-content {
-            text-align: justify;
-            font-size: 1.1em;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        
-        .section-content p {
-            margin-bottom: 15px;
-        }
-        
-        .social-links {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            padding: 40px;
-            border-radius: 15px;
-            margin-top: 50px;
-            text-align: center;
-            color: white;
-        }
-        
-        .social-links h3 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            color: white;
-        }
-        
-        .links-grid {
+
+        /* =========================================
+           БЛОКИ РАЗДЕЛОВ
+           ========================================= */
+        .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .nav-section {
+            grid-column: 1 / -1;
             margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
-        
-        .link-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .link-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .link-card h4 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            color: #ecf0f1;
-        }
-        
-        .link-card a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        
-        .link-card a:hover {
-            text-decoration: underline;
-        }
-        
-        .link-card p {
-            margin-top: 10px;
+
+        .nav-section h3 {
             font-size: 0.9em;
-            color: #bdc3c7;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #95a5a6;
+            font-weight: bold;
+            text-align: center;
         }
-        
+
+        /* Базовая плашка (Hub Card) */
+        .hub-card {
+            text-decoration: none;
+            color: inherit;
+            background: #fff;
+            border: 1px solid #3498db;
+            border-radius: 8px; 
+            padding: 35px 25px;
+            transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .hub-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .hub-card h4 {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .hub-card p {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        .hub-card .arrow {
+            margin-top: 15px;
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #3498db;
+            font-weight: bold;
+            transition: transform 0.4s ease;
+        }
+
+        .hub-card:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* =========================================
+           ФУТЕР И ВЫТЯНУТАЯ ПЛАШКА
+           ========================================= */
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-card {
+            padding: 20px 40px; 
+            flex-direction: row; 
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .footer-card .text-content h4 {
+            margin-bottom: 0;
+            font-size: 1.2em;
+        }
+
+        .footer-card .arrow {
+            margin-top: 0;
+        }
+
+        /* Адаптивность для футера */
+        @media (max-width: 600px) {
+            .footer-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+
         @media (max-width: 768px) {
             .content {
                 padding: 30px 15px;
             }
-            
             .header h1 {
                 font-size: 2em;
             }
-            
-            .section-content {
-                font-size: 1em;
-            }
-            
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
         }
-        
-        @media (max-width: 480px) {
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .social-links {
-                padding: 20px;
-            }
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-
-        
-
-
-.language-switcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 8px 15px;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.language-switcher a {
-    color: #3498db;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.language-switcher a:hover {
-    text-decoration: underline;
-}
-
-.language-switcher .flag {
-    font-size: 16px;
-}
-
-/* Стиль для переключателя в футере */
-.language-footer {
-    margin-top: 30px;
-    text-align: center;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
-
-.language-footer a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.language-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    .language-switcher {
-        top: 10px;
-        right: 10px;
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-}
-
-
-
-.link-card {
-    text-align: center;
-}        
-
-
-.form-container {
-    width: 100%;
-    overflow: hidden;
-    margin: 20px 0;
-}
-
-.yandex-form {
-    width: 100%;
-    max-width: 650px;
-    height: 500px; /* Можно регулировать по необходимости */
-    border: none;
-    display: block;
-    margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .yandex-form {
-        height: 400px;
-    }
-}
-
-@media (max-width: 480px) {
-    .yandex-form {
-        height: 300px;
-    }
-}
-
     </style>
 </head>
 <body>
-<div class="language-switcher">
-    <a href="en.html" title="English version">
-        <span class="flag">🇬🇧</span> EN
-    </a>
-</div>
+    
+    <div class="language-switcher">
+        <a href="en_main.html" title="English version">
+            <span class="flag">🇬🇧</span> EN
+        </a>
+    </div>
     
     <div class="container" style="opacity: 0.8;">
         <div class="content">
+            
             <div class="header">
                 <h1>Cristie</h1>
-                <img src="artist2.png" alt="Фото артиста" class="artist-image">
+                <img src="artist3.png" alt="Фото артиста" class="artist-image">
                 <h2>Экспериментальный музыкант, композитор и дирижёр цифрового оркестра.</h2>
             </div>
 
-            
-            <div class="section" id="streaming-main">
-                <div class="section-title" style="text-align: center;">Послушать</div>
-                <div class="section-content">
-                    <div class="links-grid">
-                        
-                        <div class="link-card">
-                            <h4>Bandcamp</h4>
-                            <div class="image-container"></div>
-                            <img src="bandcamp-button-bc-circle-aqua-256.png" alt="Фото артиста" class="artist-image2">
-                            <a href="https://cristiemusic.bandcamp.com" target="_blank">Bandcamp</a>
-                            <p>(Основная площадка, самые свежие треки и демо)</p>
-                            
-                            </div>
-                        
-                        <div class="link-card">
-                            <h4>BandLab</h4>
-                            <div class="image-container"></div>
-                            <img src="67862-BandLab_Icon_Red.png" alt="Фото артиста" class="artist-image2">
-                            <a href="https://www.bandlab.com/cristie_baltika" target="_blank">BandLab</a>
-                            <p>(Вторая площадка, самые свежие треки и демо)</p>
-                            
-                            </div>
-                            
-                        
-
-                            
-                        </div>
-
-                        </div>
-
-                        <div class="links-grid">
-
-                        <div class="link-card">
-                            <h4>Яндекс музыка</h4>
-                            <div class="image-container"></div>
-                            <img src="yandex-music-new.png" alt="Фото артиста" class="artist-image2">
-                            <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" target="_blank">Яндекс музыка</a>
-                            </div>
-                            
-                        
 
 
-                    
-                        <div class="link-card">
-                            <h4>YouTube Music</h4>
-                            <div class="image-container"></div>
-                            <img src="YouTube_full-color_icon_(2017).svg.png" alt="Фото артиста" class="artist-image2">                            
-                            <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" target="_blank">YouTube Music</a>
-                            
-                        </div>
+           
 
-</div>
-<br>
-            
-            <div class="toc">
-                <h3>Содержание</h3>
-                <ul>
-                    <li><a href="#greeting">Знакомство</a></li>
-                    <li><a href="#philosophy">Моя философия</a></li>
-                    <li><a href="#about-me">О себе</a></li>
-                    <li><a href="#text-creation">Как я пишу тексты</a></li>
-                    <li><a href="#i-listen">Что я слушаю и что меня вдохновляет</a></li>
-                    <li><a href="#music-creation">Создание музыки</a></li>
-                    <li><a href="#ai-question">Вопрос о музыке и ИИ</a></li>
-                    <li><a href="#visual-art">Визуальное искусство</a></li>
-                    <li><a href="#music-videos">Клипы</a></li>
-                    <li><a href="#self-criticism">Самокритика</a></li>
-                    <li><a href="#hell">Описание альбома - В АД и без меня</a></li>
-                    <li><a href="#who">Кто я?</a></li>
-                    <li><a href="#collaborations">Коллаборации</a></li>
-                    <li><a href="#streaming">Музыкальные стриминги</a></li>
-                    <li><a href="#social">Социальные сети</a></li>
-                </ul>
+
+            <div class="nav-grid">
+                
+                <div class="nav-section">
+                    <h3>Миры и Смыслы</h3>
+                </div>
+
+                <a href="about.html" class="hub-card">
+                    <h4>Обо мне</h4>
+                    <p>Философия проекта, путь инкогнито-артиста и моя история.</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>
+
+                <a href="hell.html" class="hub-card">
+                    <h4>В АД и без меня</h4>
+                    <p>Глубокое погружение в альбом: разбор смыслов, боли и надежды в каждом треке.</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>
+
+                <a href="skazki.html" class="hub-card">
+                    <h4>Страшные сказки</h4>
+                    <p>EP об иррациональном и мистическом. Тексты и атмосфера темного фэнтези.</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>
+
+                <a href="metro.html" class="hub-card">
+                    <h4>Подземная любовь</h4>
+                    <p>История и скрытые смыслы релиза, посвященного атмосфере Московского метрополитена.</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>
+
+                <a href="bezdna.html" class="hub-card">
+                    <h4>Бездна</h4>
+                    <p>Бездна — трек-состояние, он показывает то, что зарыто глубоко внутри, он открывает двери, и ты никогда не знаешь, какие раны это вскроет..</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>                
+
+                <a href="game/index.html" class="hub-card">
+                    <h4>Игра «АД и без меня»</h4>
+                    <p>Интерактивное погружение в мой мир. Попробуй пройти этот путь.</p>
+                    <div class="arrow">Играть →</div>
+                </a>
+
+                <div class="nav-section">
+                    <h3>Слушать и Смотреть</h3>
+                </div>
+
+                <a href="player.html" class="hub-card">
+                    <h4>Бесплатный плеер</h4>
+                    <p>Слушайте последние демо и релизы прямо здесь, без переходов на другие площадки.</p>
+                    <div class="arrow">Слушать →</div>
+                </a>
+
+                <a href="clips.html" class="hub-card">
+                    <h4>Визуальное искусство</h4>
+                    <p>Клипы, созданные с помощью ИИ-режиссуры. От хоррора до киберпанка.</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>
+
+                <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" class="hub-card">
+                    <h4>Яндекс Музыка</h4>
+                    <p>Слушайте последние релизы на яндекс музыке</p>
+                    <div class="arrow">Слушать →</div>
+                </a>   
+
+                <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" class="hub-card">
+                    <h4>Youtube Музыка</h4>
+                    <p>Слушайте последние релизы на Youtube музыке</p>
+                    <div class="arrow">Слушать →</div>
+                </a>                
+
+                <a href="https://www.youtube.com/@Cristie_music" class="hub-card">
+                    <h4>Youtube</h4>
+                    <p>Клипы и визуальный контент. От хоррора до киберпанка.</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>  
+
+                <a href="https://www.deviantart.com/cristie-music" class="hub-card">
+                    <h4>Комиксы и зарисовки</h4>
+                    <p>Мои треки, стихи и фантазии в виде комиксов</p>
+                    <div class="arrow">Смотреть →</div>
+                </a>                 
+
+                <div class="nav-section">
+                    <h3>Лаборатория</h3>
+                </div>
+
+                <a href="veo.html" class="hub-card">
+                    <h4>Гайд по VEO</h4>
+                    <p>Как я использую нейросети для генерации видео: от промптов до финального монтажа.</p>
+                    <div class="arrow">Изучить →</div>
+                </a>
+
+                <a href="how.html" class="hub-card">
+                    <h4>Создание звука</h4>
+                    <p>Техническое закулисье: гибрид DAW, RVC, лампы и нейронных лупов.</p>
+                    <div class="arrow">Изучить →</div>
+                </a>
+
             </div>
 
-            <div class="section" id="greeting">
-                <div class="section-title">Знакомство</div>
-                <div class="section-content">
-                    <p>Привет! Я Cristie, экспериментальный музыкант и я просто люблю создавать музыку. </p> 
+            <footer class="footer">
+                <a href="about.html#streaming" class="hub-card footer-card">
+                    <div class="text-content">
+                        <h4>Все стриминговые площадки и соцсети</h4>
+                    </div>
+                    <div class="arrow">Перейти →</div>
+                </a>
+            </footer>
 
-<p>Спасибо что нашел время почитать про меня и проявил интерес. Для меня очень важно рассказать - кто я, зачем я все это делаю, как именно я это делаю, что я вкладываю в свои тексты, все, без купюр, я очень хочу быть прозрачной для тебя и показать что я чувствую.</p>
-
-<p>Ну, что начнем наше знакомство?
-Как я уже сказала, я Cristie, но это не просто псевдоним, каждая буква отражает меня и имеет значение:</p>
-                    <p><strong>C</strong> - Catastrophic (Катастрофический)<br>
-                    <strong>R</strong> - Redemptive (Искупительный)<br>
-                    <strong>I</strong> - Infatuated (Страстно увлечённый)<br>
-                    <strong>S</strong> - Sacrificial (Жертвенный)<br>
-                    <strong>T</strong> - Tender (Нежный)<br>
-                    <strong>I</strong> - Immortal (Бессмертный)<br>
-                    <strong>E</strong> - Enchanting (Очаровательный)</p>
-                    
-                    <p>Да, внутренние противоречия, это моя стихия, на этом построены мои тексты, в них я вкладываю свои чувства и эмоции. 
-
-<p>Именно поэтому полный псевдоним Cristie Baltika Play Квин. </p>
-    <p>Прямая отсылка к иронии в одной из моих песен. </p>
-
-<p></p>Прежде чем мы пойдем дальше, я обязана объяснить зачем я все это делаю.</p>
-                </div>
-            </div>
-
-            <div class="section" id="philosophy">
-                <div class="section-title">Моя философия</div>
-                <div class="section-content">
-                    <p>Для меня Cristie, больше чем имя, это путь, философия, и вот о чем она: когда-то я решила что мое главное кредо - не творить зло, нивилировать его влияние. Я стараюсь выражать это через музыку, ведь иногда чтобы остановить зло, нужно провалится в АД и возглавить его, любой ценой. Знаю, утопия, но это мой путь.</p>
-
-<p>Путь через глубину текстов, через иронию и абсурд как защиту, через слезы и лирику - все это для того чтобы ты почувствовал.</p>
-
-<p>А почувствовать со мной ты можешь разное, пережить травматичный опыт, погрустить, воодушевится и встать снова, посмеяться, улыбнуться, ощутить приятную ностальгию. </p>
-
-<p>Я разная, я открыто это показываю, я не ограничиваюсь одним стилем, мне нравится многогранность.</p>
-
-<p>И ещё самое главное, все это не про коммерцию, все что я делаю - просто так, как чувствую, как мне кажется правильным. </p>
-
-<p>Мне важно через музыку передавать чувства и эмоции, дать возможность оказать поддержку кому-то, в любом формате. </p>
-                </div>
-            </div>
-
-            <div class="section" id="about-me">
-                <div class="section-title">О себе</div>
-                <div class="section-content">
-                    <p>Теперь наверное надо что-то рассказать о себе? Но знаешь, а что я могу рассказать?</p>
-<p>Ты уже заметил что личность я многогранная и я бы сказала абсурдная сама по себе. Банально, но я человек, который борется с рутиной, в жизни возможно не такой интересный и не очень красивый. Это правда. Моя жизнь очень динамична, состоит из огромного кол-ва задач и увы, музыка занимает далеко не первое место. В жизни не видно кто я, на работе не покажешь, друзья не все поймут, а о том что я сейчас тут пишу, знает пара человек из моего окружения. Если я попробую описать себя, то первое что приходит на ум, это разбитый витраж, который как то склеили и получилось непонятно что. Я - противоречия, во мне играет чувство справедливости и огромная печаль к несовершенству этого мира. </p>
-<p>Капелькой своей музыки я хочу сделать мир чуточку светлее, да это Сизифов труд, да это не возможно, но я буду это делать. </p>
-<p>Наверное, если ты читал меня в тредс, ты заметил что я либо смешу, либо пишу что-то ободряющее, либо пресекаю любой буллинг и оскорбления. А последнего мне увы хватает, не хочу чтобы люди это транслировали другим.</p>
-<p>У меня был длинный путь, полный веры, надежд и разочарований. Свой опыт и чувства я вкладываю в каждую строчку, как умею.</p>
-
-<p>Знаете, для меня было очень важно получить от вас обратную связь о своей музыке, меня это очень вдохновляет и я верю что делаю это не зря. </p>
-
-<p>И вот мы пришли к тому, что я инкогнито артист, не потому что я так хочу, а вопреки,  в том числе чтобы не сделать больно близким, и да, увы, моя работа, не позволяет мне, скажем так светить свою личность, что уж скрывать. </p>
-                </div>
-            </div>
-
-
-            <div class="section" id="text-creation">
-                <div class="section-title">Как я пишу тексты</div>
-                <div class="section-content">
-                    <p>Теперь мы плавно перейдем к творческой составляющей. Давай поговорим про тексты. Я пишу их по разному, как карта ляжет, если есть вдохновение могу сразу написать или за час, а если его нет, порой и неделя проходит. Я не придумываю тему заранее или специально, например под инфо повод. Обычно у меня просто щелкает, я записываю и либо сразу начинаю писать, либо шаг за шагом, пока не получится. </p>
-<p>В моих текстах 3 языка - Русский, Английский и Японский. Первый я люблю больше всех, а на последнем обожаю делать отсылки в текстах, ну а Английский как клей между ними. Во всех моих текстах есть скрытый смысл, даже если они на вид ироничные и смешные, так я вижу мир и его отражение. А ещё между моими треками есть мост, они идут как книга, но это моя книга. </p>
-
-<p>Тут наверное нужно уточнить, что для меня тексты - это не просто тексты, это мой терапевтический дневник, через него я конвертирую боль, эмоции в формат, который я могу передать и каждый услышит что-то для себя, что-то что откликнется.  Да, я очень заморачиваюсь, и наверное со стороны это не видно. Также я специально не ставлю себе ограничений в формате, поэтому у меня есть треки по мотивам комиксов, треки с самоиронией, трешем и стебом (а как ещё показать абсурд в мире?), ну и мои серьезные, глубоко личные работы.</p>
-                </div>
-            </div>
-
-
-            <div class="section" id="i-listen">
-                <div class="section-title">Что я слушаю и что меня вдохновляет</div>
-                <div class="section-content">
-                    <p>Наверное надо рассказать что я слушаю и что меня вдохновляет?</p>
-<p>Я люблю разное, но вот мое любимое:</p>
-<p><strong>Alice in chains</strong></p>
-<p><strong>Audioslave</strong></p>
-<p><strong>Pearljam</strong></p>
-<p><strong>Seether</strong></p>
-<p><strong>Linkinpark</strong></p>
-<p><strong>Pod</strong></p>
-<p><strong>Korn</strong></p>
-<p><strong>Stone sour</strong></p>
-<p><strong>The Neighbourhood</strong></p>
-<p><strong>Greenday</strong></p>
-<p><strong>Rekevin</strong></p>
-<p><strong>Disturbed</strong></p>
-<p><strong>Rage agaist the machine</strong></p>
-<p><strong>Rhcp</strong></p>
-<p><strong>Massive attack</strong></p>
-<p><strong>Rob zombie</strong></p>
-<p><strong>Ledzeppelin</strong></p>
-<p><strong>IDAI</strong></p>
-<p><strong>Celldweller</strong></p>
-<p><strong>Florence + the Machine</strong></p>
-<p><strong>Foo Fighters</strong></p>
-<p><strong>God Is An Astronaut</strong></p>
-<p><strong>Godsmack</strong></p>
-<p><strong>Ill Nino</strong></p>
-<p><strong>Marilyn Manson</strong></p>
-<p><strong>Nine Inch Nails</strong></p>
-<p><strong>Oomph</strong></p>
-<p><strong>Poe</strong></p>
-<p><strong>Portishead</strong></p>
-<p><strong>Queens Of The Stone Age</strong></p>
-<p><strong>Shinedown</strong></p>
-<p><strong>Silverchair</strong></p>
-<p><strong>Soundgarden</strong></p>
-<p><strong>Spineshank</strong></p>
-<p><strong>Staind</strong></p>
-<p><strong>Starset</strong></p>
-<p><strong>The Cardigans</strong></p>
-<p><strong>The Cranberries</strong></p>
-<p><strong>The White Stripes</strong></p>
-<p>И это только часть.</p>
-<p>А вдохновляет меня постоянное самокопание, мозгоедство и мир вокруг.</p>
-                </div>
-            </div>            
-
-            <div class="section" id="music-creation">
-                <div class="section-title">Создание музыки</div>
-                <div class="section-content">
-                    <p>Теперь наверное нужно про путь к музыке рассказать, как я к этому пришла вообще.</p>
-<p>А пришла давно, много лет назад, тогда я записывала песни (вообще другие) под свою электрогитару и у меня ничего особо не получалось. Дело в том, что я жуткий перфекционист, это годами мне мешало. </p>
-<p>Я просто не давала себе права начать, делать ошибки, ну и надо добавить что и самооценка тогда у меня была говно (спасибо добрым людям). В какой-то момент все сломалось, несколько раз, и честно, было вообще не до музыки, хоть я и очень люблю ее. </p>
-
-<p>3 года назад произошла перезагрузка. Точнее давайте так, меня долго ломали, но не получилось, но получился тот вариант который хоть и сгорел, но стал как бы сам по себе, другой, который больше не хочет той боли. Да, внутри все перегорело, но это дало мне свободу, в том числе от себя прежней.</p>
-
-<p>Я чётко поняла что я хочу выразить эту боль, возглавить этот поток и хоть это и зло, в каком то смысле, я конвертирую его во что-то хорошее, да глупо, да наивно, но я так решила. Так родились эти тексты, не сразу, особенно сложно то что я не считаю их идеальными, как и музыку. </p>
-
-<p>Я поняла что моя жизнь просто не даёт мне возможности сделать все идеально. Моя ответственность перед близкими, моя работа, огромная ответственность, все это в каком-то смысле якорь. Но я люблю этот якорь и не могу и не хочу его бросить. </p>
-
-<p>Тогда и начались первые эксперименты.
-Да, тексты были, но где взять музыку?
-Делать все вручную было бы непосильным трудом, я ещё и не терпеливый человек, стало ясно что то, как было раньше - больше не работает и никогда не работало. 
-Позже мне попался проект АИгитарист, меня настолько поразили каверы голосом Летова, что мой рационализм и любопытство взяли верх, и я стала изучать как это было сделано.  
-Оказалось что там использовался RVC.
-RVC - это инструмент, который позволяет улучшить и усилить мой собственный голос, чтобы он звучал чище и качественнее в треках. В отличие от нейросетей, создающих музыку с нуля (как Suno), он работает только с моим вокалом, как продвинутый фильтр для голоса.
-Я могу обучить его на своих лучших вокальных партиях, я могу обучать свой разный вокал, лирика, скрим, все что умею, а потом доводить до ума! 
-Получается я пою сама, а потом усиливаю свой же вокал.
-Но, увы это не решало проблему с музыкой, битами и прочим..</p>
-
-
-<p>Тут и начался первый путь экспериментов, и именно отсюда начинается глава - кринж Ютуба 
-Да, именно так, канал был создан чтобы хоть что-то попробовать, а ещё я не считаю себя красивой (привет комплексы) - поэтому главная цель была просто что-то выложить. Свои тексты было страшно, да и кому они нужны (я тогда думала так). 
-Поэтому я взяла каверы, сделала свою отстойную версию на IDAI и ещё пару песен.
-Музыку, я тогда делала в suno, да, такова правда, это был самый простой и быстрый инструмент на тот момент. Я долго выбирала именно нужный мне стиль звучания (чтоб тлен, красиво и не говно) и что-то начало получатся. Да, фидбэк был негативный, но я решила делать дальше, нацепляла красивый фильтр на рожу, чтоб хоть как-то себе нравится и продолжала. 
-Так было до момента пока я не поняла что это очередной тупик. Suno даёт мне рамки, а не свободу, нужен был новый формат, но при этом быстрый и эффективный.
-И я придумала его и до сих пор его улучшаю. А что касается Ютуба, по нему сейчас четко видно мой путь, от черновиков до полноценных клипов. И даже цвета в роликах (от старых к новым) выбраны не случайно, они идут от светлых к темным, потом к красным, а потом к белому, мертвому лицу. Это не просто так, я показываю путь, что чем дальше, тем сильнее накал, и то что было - должно переродится. Даже всратый стиль роликов показывает что тот кого ты видишь - заперт в пузыре. Но если честно я разделяю свое творчество и то что было до, не считаю чем то достойным, это были скорее эмоциональные эксперименты, чем про музыку. Хотя я знаю что некоторым из вас нравятся эти каверы, хоть это и не совсем про меня. Про создание клипов будет чуть позже.
-Идём дальше.</p>
-
-<p>Вернёмся к музыке.
-У Suno есть фича с продолжением звука, я взяла гитару и записала небольшую партию и отправила в ИИ, результат был неплох, вариации звучания были полезны и расширили мой кругозор. </p>
-
-<p>Но, я поняла что можно пойти дальше.
-Я буду делать основные моменты сама, в DAW, но дальше, я буду делать из них лупы через suno , отбирать лучшее и склеивать их.
-Получается я ускорила создание семплов для daw, чтобы сбивать их. 
-Но это прибавило проблем, вся эта кухня создаёт косяки в звуке. Я стала активнее изучать плагины и на помощь пришли izotope ozone и rx. Я стала убирать огрехи, щелчки, фоновые звуки и т.д. 
-Итоговой точкой стало то, что я делаю композицию на 90% а потом делаю ее преобразование через remix suno
-Тут надо добавить что сам SUNO я скорее использую как дополнение к DAW, в его редакторе я убираю косяки ремикса, могу добавить инструменты. Сам ремикс уже редактируется дальше в DAW. 
-<p>Получается вот как я создаю трек:</p>
-<p><strong>Пишу текст</strong></p>
-<p><strong>Продумываю стиль и музыку</strong></p>
-<p><strong>Делаю наброски битов в daw</strong></p>
-<p><strong>Преобразую наброски в ИИ и делаю из них лупы</strong></p>
-<p><strong>Сбиваю все это в композицию шаг за шагом</strong></p>
-<p><strong>Получаю финал, делаю финальный ремикс инструментала в ИИ</strong></p>
-<p><strong>Убираю все косяки плагинами</strong></p>
-<p><strong>Создаю другой нейронкой фоновые звуки (шелест листьев, крики, выстрелы и тд)</strong></p>
-<p><strong>Чищу их и добавляю в композицию</strong></p>
-<p><strong>На готовый инструментал я пишу вокал</strong></p>
-<p><strong>Как правило много партий, выбираю лучшую</strong></p>
-<p><strong>Потом преобразовываю вокал через RVC</strong></p>
-<p><strong>Комбинирую вокальные дорожки</strong></p>
-<p><strong>Потом снова прогоняю вокал через плагины.</strong></p>
-<p><strong>Дорожек вокала может быть и больше одной, на разных моделях RVC.</strong></p> </p>
-
-<p>В итоге получается трек. 
-<p>Более подробно почему и как я делаю звук, можно почитать  - <a href="how.html">тут</a> </p>    
-Стоит ли оно того? 
-Однозначно стоит - упарываясь, я могу сделать трек за неделю - полторы, а это очень быстро. Это именно то, что мне нужно.</p>
-
-<p>Вы скажете что я извращенка, и да, вы правы, но это мой путь и моя свобода.
-Мне нравится мешать разные инструменты которые на первый взгляд не совместимые.
-А ещё это даёт мне свободу, я получаю много вариаций в процессе работы, я могу сразу понять что подходит, а что нет.</p>
-
-<p>Наверное сейчас ты разочарован, понимаю, но это правда, я не идеальна, ни внешне, ни внутри, какая есть, это моя правда, мой выбор.</p>
-                </div>
-            </div>
-
-            <div class="section" id="ai-question">
-                <div class="section-title">Вопрос об ИИ</div>
-                <div class="section-content">
-                    <p>Можно ли назвать меня ИИ?
-Я думаю нет. Я скорее гибрид, таких как я немного и у нас нет названия, но я считаю что за этим будущее. </p>
-
-<p>И раз уж мы говорим про ИИ - тексты это не ИИ, это я, а в треке сбито и записано то, что я чувствую и как я вижу, разве важно как это сделано?
-Если ты послушал и что-то почувствовал, разве чувства не были настоящими?
-Это ли не эмоции?
-Значит правда? Или нет?
-Решать не мне.</p>
-                </div>
-            </div>
-
-            <div class="section" id="visual-art">
-                <div class="section-title">Визуальное искусство</div>
-                <div class="section-content">
-                    <p>Ещё кое что. Личное, про внешность. Мне нравится рисовать себя, дело в том что моя работа связана с ИИ и я неплохо в этом разбираюсь (обучаю этих гадов) Поэтому арт, обложки и то как я себя позиционирую нарисовано в ИИ, да, но я специально обучила модельку (lora) на своём так сказать идеальном лице, как я хотела бы выглядеть, но увы не буду. Это мой способ воспроизвести внутреннюю красоту, да странный, но такой. И да, мой Инстаграм какое-то время (до того как я стала вести Threads) вел робот (как я уже говорила моя работа связана частично с ИИ и я пишу разных роботов) ,которого я создала.  Я поняла что это не тот путь по которому я хочу развиваться и выключила его, хватит ему меня рисовать.
-Нет ценности в этих картинках и я думаю что скоро их просто удалю. Если честно мне тяжело даётся Инстаграм, не люблю я это дело. Поэтому скорее всего наведу там порядок, оставлю только мини клипы и те фотки, которые самой нравятся, которые я делаю сама.
-И кстати про аватарку (на bandlab и в описании альбома) - это отсылка к Шону Моргану из Seether, был у него фотосет в таких тонах. </p>
-                </div>
-            </div>
-
-            <div class="section" id="music-videos">
-                <div class="section-title">Клипы</div>
-                <div class="section-content">
-                    <p>Давай теперь про клипы?
-Это важная часть, однажды я сделала песню Twins, это была спонтанная песня, текст просто пришел в голову. Я поняла что очень хочу ее визуализировать. Но мой прошлый формат совсем не подходил для этого. Я очень люблю хорроры и я решила что ради эксперимента, я попробую сделать клип. Это был первый опыт создания сценария, описания сцен, понимания какую картинку я хочу получить. Дальше встал вопрос выбора инструмента, им однозначно стал veo3 и несколько локальных нейронок (иначе как я себя перенесу в кадр), плюс Hailuo AI для продолжения сцен из поставленных статичных кадров. Статичные кадры я делаю в локальных Stable Diffusion и Flux, с Lora обученными на мне. Сцены делались долго, я училась писать промты как режиссер, чтобы veo3 понимал ракурсы, свет, сцену, композицию и не делал кашу. Потом все это я монтирую в видео редакторе, собираю воедино. У меня не было понимания что получится, и не было надежды что клип примут, но честно? Результат меня удивил, его очень хорошо приняли и 10тыс просмотров на старте были шоком. Я поняла что мне нравится процесс создания сцен, писать сценарий, по кусочкам воплощать идею в жизнь. Я однозначно хочу ещё и мой второй опыт на клип Russian Samurai доказал что я могу быть разноформатной и в клипах. А дальше я начала делать мини клипы, и хочу сделать их на часть треков альбома - В АД и без меня. Вообщем я не собираюсь останавливаться, но скажу честно, это сложно. Мой Ютуб впервые стал не кринжем, для меня это важно. </p>
-<p>Посмотреть мои клипы можно на сайте (или на ютубе) - <a href="clips.html">Клипы</a> </p>
-                </div>
-            </div>
-
-            <div class="section" id="self-criticism">
-                <div class="section-title">Самокритика</div>
-                <div class="section-content">
-<p>Я думаю это важно.
-Я не звезда и не стремилась ей быть.
-Мои тексты не уникальны, да, есть ребята намного талантливее меня, я это знаю.
-Инструментал? Разумеется есть к чему придраться, любой профи скажет что моя музыка проходная, я знаю это.
-Мой подход создания музыки - это хаос, структурированный, но хаос. 
-Как меня понять и прочитать?
-Честно? Я сама не знаю.
-Но кое что я знаю точно.</p>
-
-<p>Мои тексты помогают людям, ваши отзывы это прямое доказательство и я вам очень благодарна за это, правда. </p>
-
-<p>И давайте, чтобы это подтвердить, просто вспомним про мое описание альбома - В АД и без меня - это и есть терапевтический дневник помогающий другим.</p>
-                </div>
-            </div>
-
-            
-            <div class="section" id="hell">
-                <div class="section-title">Описание альбома - В АД и без меня</div>
-                <div class="section-content">
-                    <p>Тут вы найдете мое описание альбома - <a href="hell.html">В АД и без меня</a> </p>
-                    <p>Там я рассказываю о чем каждый трек и что я вложила в этот альбом</p>
-                    <p>Лично, глубоко, мрачно..</p>
-                </div>
-            </div>     
-
-            <div class="section" id="who">
-                <div class="section-title">Кто я?</div>
-                <div class="section-content">
-                    <p>Итого мы приходим к философской части вопроса, а кто я вообще?</p>
-<p>Я бы сказала что я демон с обгоревшими крыльями ангела, которые ещё и оторвали а душу тупо стерли.
-Существую вопреки, так сказать.
-Можно ли сказать что моя музыка ИИ?
-Ну если я в нее вкладываю душу и создаю сама? Наверное нет? 
-Свой вокал через ИИ? А в чем отличие от чистки вокала в daw или в автотюне?
-Да, я себя оцифровала, но мне это даже нравится. У меня есть в чем-то своя цифровая копия и даже не одна. </p>
-
-<p>К чему веду, я уникальна, противоречива, даже в чем то невозможна - именно это и делает меня настоящей. </p>
-
-<p>Прости если разочаровала, не ставила себе такой цели, просто таков мой путь. </p>
-
-
-<p>Мой дорогой слушатель, если ты не испугался и ты все ещё здесь, поехали дальше.</p>
-                </div>
-            </div>            
-
-            <div class="section" id="collaborations">
-                <div class="section-title">Коллаборации</div>
-                <div class="section-content">
-                    <p>Делаешь ли ты коллабы?</p>
-<p>Да! Но редко, и на своих условиях.
-Как я уже сказала, моя музыка не для всех и мне важно чтобы она отражала меня, поэтому я не пою и не пишу тексты под запрос - только если мы совпали и я хочу это создать. Но. Я всегда сохраняю свой стиль, это значит что я делаю полноценный трек, пишу текст, делаю биты и все, все, все и только потом, я даю это в руки второго музыканта, он может отредактировать трек, добавить свои части. Но основной трек всегда остаётся за мной - это мое правило, моя версия. Почти во всех коллабах, версии слабее моего оригинала, поэтому мне важно его сохранить. 
-А ещё есть треки которые делались для коллаба, но не были приняты, и такое бывает.</p>
-
-<p>Можно ли у тебя заказать текст или песню?
-Скорее нет чем да.
-Для меня музыка это творчество, я не представляю когда оно по запросу, это уже покупка, коммерция, а я про свободу.
-Я могу написать текст человеку, если я сама этого хочу, и я так иногда делаю. 
-Тексты песен или стихи, да, вот такое бывает. У меня была мысль делать тексты в обмен на пожертвования в благотворительные фонды, но честно, я не знаю. </p>
-                </div>
-            </div>
-
-            <div class="section" id="streaming">
-                <div class="section-title" style="text-align: center;">Музыкальные стриминги</div>
-                <div class="section-content">
-                    <div class="links-grid">
-                        
-                        <div class="link-card">
-                            <h4>Bandcamp</h4>
-                            <div class="image-container"></div>
-                            <img src="bandcamp-button-bc-circle-aqua-256.png" alt="Фото артиста" class="artist-image">
-                            <a href="https://cristiemusic.bandcamp.com/" target="_blank">Bandcamp</a>
-                            <p>(Основная площадка, самые свежие треки и демо)</p>
-                            
-                            </div>
-                        
-                        <div class="link-card">
-                            <h4>BandLab</h4>
-                            <div class="image-container"></div>
-                            <img src="67862-BandLab_Icon_Red.png" alt="Фото артиста" class="artist-image">
-                            <a href="https://www.bandlab.com/cristie_baltika" target="_blank">BandLab</a>
-                            <p>(Запасная площадка, самые свежие треки и демо)</p>
-                            
-                            </div>
-                            
-                        
-                        <div class="link-card">
-                            <h4>Spotify</h4>
-                            <div class="image-container"></div>
-                            <img src="Spotify_icon.svg.png" alt="Фото артиста" class="artist-image">
-                            <a href="https://open.spotify.com/artist/4r2dxYMohCOpfdTIsea6zc?si=TOBfksuRSuS0Mm1niBVVvg" target="_blank">Слушать на Spotify</a>
-                            </div>
-                            
-                        </div>
-
-                        </div>
-
-                        <div class="links-grid">
-
-                        <div class="link-card">
-                            <h4>Яндекс музыка</h4>
-                            <div class="image-container"></div>
-                            <img src="yandex-music-new.png" alt="Фото артиста" class="artist-image">
-                            <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" target="_blank">Яндекс музыка</a>
-                            </div>
-                            
-                        
-
-
-                    
-                        <div class="link-card">
-                            <h4>YouTube Music</h4>
-                            <div class="image-container"></div>
-                            <img src="YouTube_full-color_icon_(2017).svg.png" alt="Фото артиста" class="artist-image">                            
-                            <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" target="_blank">YouTube Music</a>
-                            <p>Музыка и клипы</p>
-                        </div>
-
-</div>
-
-
-            <div class="section" id="social">
-                <div class="section-title" style="text-align: center;">Социальные сети</div>
-                <div class="section-content">
-                    <div class="links-grid">
-                        
-                        
-                        <div class="link-card">
-                            <h4>Канал YouTube</h4>
-                            <div class="image-container"></div>
-                            <img src="YouTube_full-color_icon_(2017).svg.png" alt="Фото артиста" class="artist-image">                            
-                            <a href="https://www.youtube.com/@Cristie_music" target="_blank">Канал YouTube</a>
-                            <p>Клипы и визуальный контент</p>
-                        </div>
-                            
-                        
-                        <div class="link-card">
-                            <h4>Instagram</h4>
-                            <div class="image-container"></div>
-                            <img src="Instagram_icon.png" alt="Фото артиста" class="artist-image">
-                            <a href="https://www.instagram.com/cristie_music/" target="_blank">Instagram</a>
-                            <p>Визуальные материалы</p>
-                            </div>
-                            
-                        </div>
-
-                        </div>
-
-                        <div class="links-grid">
-
-                        <div class="link-card">
-                            <h4>Threads</h4>
-                            <div class="image-container"></div>
-                            <img src="Threads_(app).png" alt="Фото артиста" class="artist-image">
-                            <a href="https://www.threads.com/@cristie_music" target="_blank">Threads</a>
-                            <p>Мысли и общение</p>
-                            </div>
-                            
-                        
-
-
-                    
-                        <div class="link-card">
-                            <h4>Bandlink</h4>
-                            <div class="image-container"></div>
-                            <img src="images-bandlink.png" alt="Фото артиста" class="artist-image">                            
-                            <a href="https://band.link/cristie" target="_blank">Bandlink</a>
-                            <p>Музыка и ссылки</p>
-                        </div>
-
-</div>
-
-
-
-
-
-                </div>
-            </div>
-
-
-            <div class="social-links">
-                <h3>Связь со мной</h3>
-                <p style="font-size: 1.2em; margin-bottom: 20px;">Если хочешь поделиться мыслями о музыке или просто поговорить - я всегда открыта для общения.</p>
-                <p style="font-size: 1em; color: #bdc3c7;">Твои отзывы на мои треки - самая большая благодарность.</p>
-<div class="form-container">
-                <script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src="https://forms.yandex.ru/u/68c2b111493639167f514a1b?iframe=1" frameborder="0" name="ya-form-68c2b111493639167f514a1b" width="650"></iframe>
-</div>
-            </div>
         </div>
     </div>
 </body>

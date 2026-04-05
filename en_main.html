@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristie - Home Page | Navigation</title>
+    <meta name="description" content="Cristie portal home page. Navigation through releases, music videos, blog, and music of the experimental musician.">
+    
+    <style>
+        /* =========================================
+           ORIGINAL SITE STYLES (BASE AND HEADER)
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px; 
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .artist-image:hover {
+            transform: scale(1.02);
+        }   
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .language-switcher a {
+            color: #3498db;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* =========================================
+           SECTION BLOCKS
+           ========================================= */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .nav-section {
+            grid-column: 1 / -1;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .nav-section h3 {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #95a5a6;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Base Hub Card */
+        .hub-card {
+            text-decoration: none;
+            color: inherit;
+            background: #fff;
+            border: 1px solid #3498db;
+            border-radius: 8px; 
+            padding: 35px 25px;
+            transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .hub-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .hub-card h4 {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .hub-card p {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        .hub-card .arrow {
+            margin-top: 15px;
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #3498db;
+            font-weight: bold;
+            transition: transform 0.4s ease;
+        }
+
+        .hub-card:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* =========================================
+           FOOTER AND EXTENDED CARD
+           ========================================= */
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-card {
+            padding: 20px 40px; 
+            flex-direction: row; 
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .footer-card .text-content h4 {
+            margin-bottom: 0;
+            font-size: 1.2em;
+        }
+
+        .footer-card .arrow {
+            margin-top: 0;
+        }
+
+        /* Footer responsiveness */
+        @media (max-width: 600px) {
+            .footer-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 15px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="language-switcher">
+        <a href="index.html" title="Russian version">
+            <span class="flag">🇷🇺</span> RU
+        </a>
+    </div>
+    
+    <div class="container" style="opacity: 0.8;">
+        <div class="content">
+            
+            <div class="header">
+                <h1>Cristie</h1>
+                <img src="artist3.png" alt="Artist photo" class="artist-image">
+                <h2>Experimental musician, composer, and conductor of a digital orchestra.</h2>
+            </div>
+
+            <div class="nav-grid">
+                
+                <div class="nav-section">
+                    <h3>Worlds and Meanings</h3>
+                </div>
+
+                <a href="about.html" class="hub-card">
+                    <h4>About Me</h4>
+                    <p>Project philosophy, the path of an incognito artist, and my story.</p>
+                    <div class="arrow">View →</div>
+                </a>
+
+                <a href="hell.html" class="hub-card">
+                    <h4>To HELL and Without Me</h4>
+                    <p>A deep dive into the album: breakdown of meanings, pain, and hope in every track.</p>
+                    <div class="arrow">View →</div>
+                </a>
+
+                <a href="skazki.html" class="hub-card">
+                    <h4>Scary Tales</h4>
+                    <p>An EP about the irrational and mystical. Dark fantasy lyrics and atmosphere.</p>
+                    <div class="arrow">View →</div>
+                </a>
+
+                <a href="metro.html" class="hub-card">
+                    <h4>Underground Love</h4>
+                    <p>The history and hidden meanings of the release dedicated to the atmosphere of the Moscow Metro.</p>
+                    <div class="arrow">View →</div>
+                </a>
+
+                <a href="bezdna.html" class="hub-card">
+                    <h4>Abyss</h4>
+                    <p>Abyss is a state-of-mind track, it shows what is buried deep inside, it opens doors, and you never know what wounds it will uncover.</p>
+                    <div class="arrow">View →</div>
+                </a>                
+
+                <a href="game/index.html" class="hub-card">
+                    <h4>"Cristie" Game</h4>
+                    <p>An interactive dive into my world. Try to walk this path.</p>
+                    <div class="arrow">Play →</div>
+                </a>
+
+                <div class="nav-section">
+                    <h3>Listen and Watch</h3>
+                </div>
+
+                <a href="player.html" class="hub-card">
+                    <h4>Free Player</h4>
+                    <p>Listen to the latest demos and releases right here, without jumping to other platforms.</p>
+                    <div class="arrow">Listen →</div>
+                </a>
+
+                <a href="clips.html" class="hub-card">
+                    <h4>Visual Art</h4>
+                    <p>Music videos created with AI direction. From horror to cyberpunk.</p>
+                    <div class="arrow">Watch →</div>
+                </a>
+
+                <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" class="hub-card">
+                    <h4>Yandex Music</h4>
+                    <p>Listen to the latest releases on Yandex Music.</p>
+                    <div class="arrow">Listen →</div>
+                </a>   
+
+                <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" class="hub-card">
+                    <h4>YouTube Music</h4>
+                    <p>Listen to the latest releases on YouTube Music.</p>
+                    <div class="arrow">Listen →</div>
+                </a>                
+
+                <a href="https://www.youtube.com/@Cristie_music" class="hub-card">
+                    <h4>YouTube</h4>
+                    <p>Music videos and visual content. From horror to cyberpunk.</p>
+                    <div class="arrow">Watch →</div>
+                </a>  
+
+                <a href="https://www.deviantart.com/cristie-music" class="hub-card">
+                    <h4>Comics and Sketches</h4>
+                    <p>My tracks, poems, and fantasies in the form of comics.</p>
+                    <div class="arrow">View →</div>
+                </a>                
+
+                <div class="nav-section">
+                    <h3>Laboratory</h3>
+                </div>
+
+                <a href="veo.html" class="hub-card">
+                    <h4>VEO Guide</h4>
+                    <p>How I use neural networks for video generation: from prompts to final editing.</p>
+                    <div class="arrow">Explore →</div>
+                </a>
+
+                <a href="how.html" class="hub-card">
+                    <h4>Sound Creation</h4>
+                    <p>Technical backstage: a hybrid of DAW, RVC, tubes, and neural loops.</p>
+                    <div class="arrow">Explore →</div>
+                </a>
+
+            </div>
+
+            <footer class="footer">
+                <a href="about.html#streaming" class="hub-card footer-card">
+                    <div class="text-content">
+                        <h4>All streaming platforms and social networks</h4>
+                    </div>
+                    <div class="arrow">Go →</div>
+                </a>
+            </footer>
+
+        </div>
+    </div>
+</body>
+</html>
