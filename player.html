@@ -47,6 +47,14 @@
             overflow: hidden;
         }
 
+        .btn svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor; /* Иконка всегда будет цвета var(--text) */
+            display: block;
+            pointer-events: none; /* Чтобы клик точно срабатывал по кнопке */
+        }
+
         /* --- ПЛЕЕР --- */
         .player-main {
             padding: 40px;
@@ -193,10 +201,18 @@
             </div>
             
             <div class="controls">
-                <button class="btn" onclick="prevTrack()">⏮&#xFE0E;</button>
-                <button class="btn play-btn" id="playPause" onclick="togglePlay()">▶&#xFE0E;</button>
-                <button class="btn" onclick="nextTrack()">⏭&#xFE0E;</button>
-                <button class="btn" id="repeatBtn" onclick="toggleRepeat()">🔁&#xFE0E;</button>
+                <button class="btn" onclick="prevTrack()">
+                    <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                </button>
+                <button class="btn play-btn" id="playPause" onclick="togglePlay()">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                <button class="btn" onclick="nextTrack()">
+                    <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+                <button class="btn" id="repeatBtn" onclick="toggleRepeat()">
+                    <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+                </button>
             </div>
 
             <div class="progress-area">
@@ -370,14 +386,17 @@
             togglePlay(true);
         }
 
+        const playIcon = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+        const pauseIcon = `<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+
         function togglePlay(forcePlay = false) {
             if (audio.paused || forcePlay) { 
                 audio.play(); 
-                playBtn.innerHTML = '⏸&#xFE0E;'; // Иконка паузы
+                playBtn.innerHTML = pauseIcon; // Ставим иконку паузы
             }
             else { 
                 audio.pause(); 
-                playBtn.innerHTML = '▶&#xFE0E;'; // Иконка плея
+                playBtn.innerHTML = playIcon; // Ставим иконку плея
             }
         }
 
