@@ -13,6 +13,8 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cristie-music.github.io/clips" />
 
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
     <style>
         * {
             margin: 0;
@@ -137,16 +139,18 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #000; /* Черный фон до загрузки видео */
         }
 
-        .video-container iframe {
+        /* Стили для нового HTML5 плеера */
+        .video-container video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
             border-radius: 10px;
+            object-fit: cover;
         }
 
         .clip-description {
@@ -207,38 +211,16 @@
         }
 
         @media (max-width: 768px) {
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .clips-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .language-switcher {
-                top: 10px;
-                right: 10px;
-                font-size: 12px;
-            }
+            .content { padding: 30px 20px; }
+            .clips-grid { grid-template-columns: 1fr; gap: 30px; }
+            .header h1 { font-size: 2em; }
+            .language-switcher { top: 10px; right: 10px; font-size: 12px; }
         }
 
         @media (max-width: 480px) {
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .clips-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .clip-card {
-                padding: 20px;
-            }
+            .content { padding: 20px 15px; }
+            .clips-grid { grid-template-columns: 1fr; }
+            .clip-card { padding: 20px; }
         }
     </style>
 </head>
@@ -266,21 +248,21 @@
                 </div>
 
                 <div class="clips-grid">
+                    
                     <div class="clip-card">
                         <div class="clip-title">Instagram</div>
                         <div class="video-container">
-                            <div style="width:100%; height:0px; padding-bottom:177.778%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/gnb7nl?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/instagram/index.m3u8" poster="vid/instagram/poster.jpg"></video>
                         </div>
                         <div class="clip-description">
                             Песня о том как мы убиваем себя и свое время
                         </div>
                     </div>
 
-                    
                     <div class="clip-card">
                         <div class="clip-title">TWINS</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/7tvd0x?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/twins/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             Первый полноценный клип с сюжетом в жанре хоррор
@@ -290,7 +272,7 @@
                     <div class="clip-card">
                         <div class="clip-title">Parasite - Bashee Cover</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/f03cdo?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/parasite/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             Кавер на композицию Bashee с моей визуализацией
@@ -300,7 +282,7 @@
                     <div class="clip-card">
                         <div class="clip-title">Crawl Away</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/6ncg89?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/crawl_away/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             Очень личное видео
@@ -310,7 +292,7 @@
                     <div class="clip-card">
                         <div class="clip-title">DeathbyRomy - CRASH (Cover by Cristie)</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.338%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/sgr36p?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/crash/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             Кавер на композицию DeathbyRomy в моём исполнении
@@ -320,7 +302,7 @@
                     <div class="clip-card">
                         <div class="clip-title">Электронная Она</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/p0i47e?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/electronnaya/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             Клип о том как роботы нас заменят. Шучу! Или нет?
@@ -330,7 +312,7 @@
                     <div class="clip-card">
                         <div class="clip-title">🎌 Russian Samurai Girl</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/d9qnm4?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/samurai/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             Найди все 22 отсылки! Ироничный клип про пиво
@@ -340,12 +322,13 @@
                     <div class="clip-card">
                         <div class="clip-title">EIVØR - Tokuni (Cover)</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/peylpn?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/tokuni/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             Кавер на композицию EIVØR с атмосферной визуализацией
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -368,5 +351,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Находим все видео на странице с классом custom-player
+            var videos = document.querySelectorAll('video.custom-player');
+            
+            videos.forEach(function(video) {
+                var src = video.getAttribute('data-src');
+                
+                // Проверяем поддерживает ли браузер hls.js
+                if (Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } 
+                // Если это Safari, он умеет играть m3u8 из коробки
+                else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
