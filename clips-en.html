@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cristie - Music Videos | Cristie Baltika Play Queen</title>
-    <meta name="description" content="Cristie's music videos - experimental musician and composer. Cristie Baltika Play Queen. Music videos and visual art.">
-    <meta name="keywords" content="Cristie music videos, Cristie Baltika Play Queen, cristie_music, music videos, visual art">
+    <title>Cristie - Clips | Cristie Baltika Play Queen</title>
+    <meta name="description" content="Clips by Cristie - experimental musician and composer. Cristie Baltika Play Queen. Music videos and visual art.">
+    <meta name="keywords" content="Cristie clips, Cristie Baltika Play Queen, cristie_music, music videos, visual art">
     <meta name="author" content="Cristie">
-    <meta property="og:title" content="Cristie - Music Videos">
-    <meta property="og:description" content="Music videos and visual content by experimental musician Cristie">
+    <meta property="og:title" content="Cristie - Clips">
+    <meta property="og:description" content="Clips and music videos by experimental musician Cristie">
     <meta property="og:type" content="website">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cristie-music.github.io/clips-en" />
+    <link rel="canonical" href="https://cristie-music.github.io/clips" />
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <style>
         * {
@@ -132,21 +134,23 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             margin-bottom: 15px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #000; /* Black background until video loads */
         }
 
-        .video-container iframe {
+        /* Styles for the HTML5 player */
+        .video-container video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
             border-radius: 10px;
+            object-fit: cover;
         }
 
         .clip-description {
@@ -207,99 +211,78 @@
         }
 
         @media (max-width: 768px) {
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .clips-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .language-switcher {
-                top: 10px;
-                right: 10px;
-                font-size: 12px;
-            }
+            .content { padding: 30px 20px; }
+            .clips-grid { grid-template-columns: 1fr; gap: 30px; }
+            .header h1 { font-size: 2em; }
+            .language-switcher { top: 10px; right: 10px; font-size: 12px; }
         }
 
         @media (max-width: 480px) {
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .clips-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .clip-card {
-                padding: 20px;
-            }
+            .content { padding: 20px 15px; }
+            .clips-grid { grid-template-columns: 1fr; }
+            .clip-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="language-switcher">
-        <a href="clips.html" title="Russian version">
+        <a href="index.html" title="Russian version">
             <span class="flag">🇷🇺</span> RU
         </a>
     </div>
     
     <div class="container">
         <div class="content">
-            <a href="en.html" class="back-link">← Back to Main Page</a>
+            <a href="index.html" class="back-link">← Back to Home</a>
             
             <div class="header">
-                <h1>Cristie - Music Videos</h1>
-                <img src="artist2.png" alt="Artist photo" class="artist-image">
+                <h1>Cristie - Clips</h1>
+                <img src="artist2.png" alt="Artist Photo" class="artist-image">
                 <h2>Visual embodiment of music and emotions</h2>
             </div>
 
             <div class="section">
                 <div class="section-title">Music Videos</div>
                 <div class="section-content">
-                    <p>Here you'll find my music videos - visual stories that complement my music and help you dive deeper into the atmosphere of each composition. Every video is a separate story filled with emotions and meanings.</p>
+                    <p>Here you will find my clips - visual stories that complement my music and help you dive deeper into the atmosphere of each composition. Every clip is a separate story, filled with emotions and meanings.</p>
                 </div>
 
                 <div class="clips-grid">
+                    
                     <div class="clip-card">
                         <div class="clip-title">Instagram</div>
                         <div class="video-container">
-                            <div style="width:100%; height:0px; padding-bottom:177.778%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/gnb7nl?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/instagram/index.m3u8" poster="vid/instagram/poster.jpg"></video>
                         </div>
                         <div class="clip-description">
-                            A song about how we kill ourselves and our time.
+                            A song about how we kill ourselves and our time
                         </div>
                     </div>
-                    
+
                     <div class="clip-card">
                         <div class="clip-title">TWINS</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/7tvd0x?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/twins/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
-                            First full-length music video with a horror storyline
+                            The first full-fledged music video with a horror plot
                         </div>
                     </div>
 
                     <div class="clip-card">
                         <div class="clip-title">Parasite - Bashee Cover</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/f03cdo?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/parasite/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
-                            Cover of Bashee's composition with my visualization
+                            Cover of Bashee's track with my visualization
                         </div>
                     </div>
 
                     <div class="clip-card">
                         <div class="clip-title">Crawl Away</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/6ncg89?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/crawl_away/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
                             A very personal video
@@ -309,56 +292,57 @@
                     <div class="clip-card">
                         <div class="clip-title">DeathbyRomy - CRASH (Cover by Cristie)</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.338%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/sgr36p?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/crash/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
-                            Cover of DeathbyRomy's composition in my interpretation
+                            Cover of DeathbyRomy's track performed by me
                         </div>
                     </div>
 
                     <div class="clip-card">
-                        <div class="clip-title">AI Girlfriend</div>
+                        <div class="clip-title">Electronic Her</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/p0i47e?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/electronnaya/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
-                            Video about how robots will replace us. Just kidding! Or not?
+                            A clip about how robots will replace us. Just kidding! Or am I?
                         </div>
                     </div>
 
                     <div class="clip-card">
                         <div class="clip-title">🎌 Russian Samurai Girl</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/d9qnm4?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/samurai/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
-                            Find all 22 references! Ironic video about beer
+                            Find all 22 references! An ironic clip about beer
                         </div>
                     </div>
 
                     <div class="clip-card">
                         <div class="clip-title">EIVØR - Tokuni (Cover)</div>
                         <div class="video-container">
-                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/peylpn?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                            <video controls class="custom-player" data-src="vid/tokuni/index.m3u8"></video>
                         </div>
                         <div class="clip-description">
-                            Cover of EIVØR's composition with atmospheric visualization
+                            Cover of EIVØR's track with atmospheric visualization
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <div class="section">
-                <div class="section-title">About Video Creation</div>
+                <div class="section-title">About Creating Clips</div>
                 <div class="section-content">
-                    <p>Each video is the result of extensive work: from writing the script and describing scenes to selecting visual style and editing. I use modern tools, including neural networks, to create a unique atmosphere that perfectly complements the music.</p>
-                    <p>I enjoy the process of creating music videos - it's an opportunity to express a song not only through sound but also through images, emotions, and meanings that I put into my compositions.</p>
+                    <p>Every clip is the result of hard work: from writing the script and describing scenes to choosing the visual style and editing. I use modern tools, including AI, to create a unique atmosphere that perfectly complements the music.</p>
+                    <p>I enjoy the process of creating clips - it's an opportunity to express the song not only through sound but also through images, conveying the emotions and meanings I put into my compositions.</p>
                 </div>
             </div>
 
             <div class="social-links">
                 <h3>More Content</h3>
-                <p>Follow for new videos and updates on social media</p>
+                <p>Follow for new clips and updates on social media</p>
                 <div style="margin-top: 20px;">
                     <a href="https://www.youtube.com/@Cristie_music" style="color: #3498db; text-decoration: none; margin: 0 10px;" target="_blank">YouTube</a>
                     <a href="https://www.instagram.com/cristie_music/" style="color: #3498db; text-decoration: none; margin: 0 10px;" target="_blank">Instagram</a>
@@ -367,5 +351,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all videos on the page with the custom-player class
+            var videos = document.querySelectorAll('video.custom-player');
+            
+            videos.forEach(function(video) {
+                var src = video.getAttribute('data-src');
+                
+                // Check if the browser supports hls.js
+                if (Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } 
+                // If it's Safari, it can play m3u8 out of the box
+                else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
