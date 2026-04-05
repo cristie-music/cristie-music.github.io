@@ -369,7 +369,7 @@
             view === 'tracks' ? renderAllTracks() : renderAlbums();
         }
 
-        function loadTrack(index) {
+        function loadTrack(index, isAutoPlay = true) { 
             currentIdx = index;
             const track = musicConfig[index];
             document.getElementById('title').innerText = track.title;
@@ -383,7 +383,14 @@
             } else {
                 renderAlbums();
             }
-            togglePlay(true);
+            
+            // Если это автозапуск (например, при переключении трека), то играем
+            if (isAutoPlay) {
+                togglePlay(true);
+            } else {
+                // Если это первая загрузка, просто ставим иконку PLAY
+                playBtn.innerHTML = playIcon; 
+            }
         }
 
         const playIcon = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
@@ -425,8 +432,7 @@
         }
 
         showView('tracks');
-        loadTrack(0);
-        togglePlay(false);
+        loadTrack(0, false); // Загружаем нулевой трек, но передаем false, чтобы он не заиграл сам
     </script>
 </body>
 </html>
