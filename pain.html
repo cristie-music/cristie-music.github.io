@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristie_music - Растворяюсь | Новый релиз</title>
+    <meta name="description" content="Новый релиз Cristie_music - Растворяюсь. Откровенная история о боли, зависимости и посвящение Lil Bo Weep и легендам гранжа.">
+    <meta name="keywords" content="Cristie_music, Растворяюсь, Lil Bo Weep, гранж, новый трек, Алиса Хокинс">
+    <meta name="author" content="Cristie_music">
+    <meta property="og:title" content="Cristie_music - Растворяюсь">
+    <meta property="og:description" content="Новый релиз Cristie_music - Растворяюсь. Откровенная история о боли, зависимости и посвящение Lil Bo Weep.">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cristie-music.github.io/pain.html" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('rastvoryayus1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .artist-image2 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }        
+        
+        .artist-image:hover, .artist-image2:hover, .music-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-style: italic;
+        }
+        
+        .toc {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .toc h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .toc a:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .section-content {
+            text-align: justify;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .section-content p {
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+        }
+        
+        .social-links h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .link-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+        
+        .link-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .link-card p {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+        
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .language-switcher a {
+            color: #3498db;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .quote {
+            font-style: italic;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 3px solid #3498db;
+        }
+
+        /* Стили для аудиоплеера */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2c3e50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            background: #3498db;
+            transform: scale(1.05);
+        }
+        
+        .progress-container {
+            flex-grow: 1;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress {
+            height: 100%;
+            background: #3498db;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .volume-icon {
+            margin-right: 10px;
+            color: #7f8c8d;
+        }
+        
+        .volume-slider {
+            width: 100px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border-radius: 2px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+        }
+
+        .clips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .clip-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #3498db;
+            margin-top: 20px;
+        }
+
+        .clip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .clip-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #000;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }        
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 15px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .section-content {
+                font-size: 1em;
+            }
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+            }
+            .social-links {
+                padding: 20px;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <a href="en.html" title="English version">
+            <span class="flag">🇬🇧 EN
+        </a>
+    </div>
+    
+    <div class="container" style="opacity: 0.8;">
+        <div class="content">
+            <a href="index.html" class="back-link">← Назад на главную</a>
+            
+            <div class="header">
+                <h1>Растворяюсь</h1>
+                <img src="artist6.png" alt="Фото артиста" class="artist-image">
+                <h2>Новый релиз Cristie_music</h2>
+            </div>
+
+            <div class="section" id="streaming-main">
+                <div class="section-title" style="text-align: center;">Послушать</div>
+                <div class="section-content">
+                    <div class="links-grid">
+                        <div class="link-card">
+                            <h4>Bandcamp</h4>
+                            <img src="bandcamp-button-bc-circle-aqua-256.png" alt="Bandcamp" class="artist-image2">
+                            <a href="https://cristiemusic.bandcamp.com" target="_blank">Bandcamp</a>
+                            <p>(Основная площадка, самые свежие треки и демо)</p>
+                        </div>
+                        
+                        <div class="link-card">
+                            <h4>BandLab</h4>
+                            <img src="67862-BandLab_Icon_Red.png" alt="BandLab" class="artist-image2">
+                            <a href="https://www.bandlab.com/cristie_baltika" target="_blank">BandLab</a>
+                            <p>(Вторая площадка, самые свежие треки и демо)</p>
+                        </div>
+                    </div>
+
+                    <div class="links-grid">
+                        <div class="link-card">
+                            <h4>Яндекс музыка</h4>
+                            <img src="yandex-music-new.png" alt="Яндекс музыка" class="artist-image2">
+                            <a href="https://music.yandex.ru/artist/24387513?utm_medium=copy_link" target="_blank">Яндекс музыка</a>
+                        </div>
+                        
+                        <div class="link-card">
+                            <h4>YouTube Music</h4>
+                            <img src="YouTube_full-color_icon_(2017).svg.png" alt="YouTube Music" class="artist-image2">                            
+                            <a href="https://music.youtube.com/channel/UCiPuDCOj06SKFYwJjQGCqjQ" target="_blank">YouTube Music</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="toc">
+                <h3>Содержание</h3>
+                <ul>
+                    <li><a href="#story">С чего все началось</a></li>
+                    <li><a href="#heroes">Отпечаток боли (Лейн, Курт, Крис, Эми, Вайнона)</a></li>
+                    <li><a href="#track">Звук, кассета и отсылки в треке</a></li>
+                    <li><a href="#clip">Визуальная часть и финал истории</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="story">
+                <div class="section-title">С чего все началось</div>
+                <div class="section-content">
+                    <p>Это очень необычный и личный релиз. И его будет сложно понять с первого раза. Но давай попробуем?</p>
+                    <p>Давай я расскажу с чего все началось. В конце прошлого года, я начала делать кавер на песню Don't mind me, ее исполняет Lil Bo Weep. Эту песню, я услышала примерно два года назад. И когда я делала кавер, я начала изучать лицензионные вопросы и решила, а почему бы мне, просто ей не написать (я иногда так делаю)? Оказалось что она умерла. Ей было всего 22 года. Меня переклинило.</p>
+                    <p>Я просто не поверила. Я пошла читать и охренела от ее истории. Я поняла что не смогу отпустить это. Но это совпало с моим собственным кризисом смыслов, ведь в тот момент я работала над Бездной.</p>
+                    <p>Я поняла что тема её зависимости, боли, как она пришла к этому и что ее в итоге уничтожило, меня не отпустит. В это время, мне очень хотелось вернуться к тому с чего я когда-то начинала, к той музыке, но у меня не было формы.</p>
+                    <p>Я подбирала свои старые рифы и все было не то. И когда, я окунулась в ее историю, я поняла что я хочу сделать. Я хочу не только выразить боль и посвятить трек Lil Bo Weep, я хочу снова упасть головой в гранж (даже если снова не получится), я хочу посвятить трек музыкантам, чьи жизни оборвались из-за зависимости. Мне повезло, я не имела дел с веществами, хотя окружение в то время располагало и это было круто в общих кругах. Хз, почему я в это не попала.</p>
+                    <p>Я хочу показать и донести эту мысль и боль, через музыку и клип и вернуть себя назад, вернуться к тому, что я когда-то делала, ведь начинала я с гранжа.</p>
+                    <p>Но, вот беда. У меня нет опыта этой боли, я не могу написать так текст, правда?</p>
+                    <p>Оказалось могу. Но я проживаю чужую боль, я представляю какого было ей и другим, я представляю что было бы со мной, если бы я себя уничтожила, если бы я потеряла самых близких или ребенка, как это было у Вайноны (Lil Bo Weep). Честно, мне было очень сложно. Именно окунуть себя в это. Прожить.</p>
+                    <p>Когда я делаю треки, у меня нет плана куда все пойдет, я просто делаю как чувствую. С клипами также. Я представила образы кого я хочу показать и кто откликается лично мне. Лейн, Курт, Эми, Крис. Все они прошли через невероятную боль.</p>
+                </div>
+            </div>
+
+            <div class="section" id="heroes">
+                <div class="section-title">Отпечаток боли (Лейн, Курт, Крис, Эми, Вайнона)</div>
+                <div class="section-content">
+                    <p>Давай немного поговорим о них?</p>
+                    <p><strong>Лейн Стэйли</strong> - Человек легенда, икона гранжа. Итог - передозировка спидболом. Смерть 5 апреля, в тот же день что и Курт. На этом заканчивается история, той самой Alice in Chains (которую я так люблю). Для меня Alice in Chains особенная группа, треки Would, What the Hell Have I, Get Born Again - навсегда в моем сердце. Помню как на репетициях мы перепевали What the Hell Have I, помню как учила табы этой песни. Эта группа навсегда в моем плеере. Поэтому я не могла пропустить Лейна.</p>
+                    <p><strong>Курт Кобейн.</strong> Боже, как же я фанатела с Nirvana. У меня был период когда я заслушивала до дыр все альбомы, а моя любимая You Know You're Right, а сколько раз я пересматривала MTV Unplugged In New York? Даже в этом году, я заказала себе кассету с ним. Мне, особенно в подростковом возрасте, очень откликались страдания Курта, я бы сказала что в какой то момент я была на них помешана, слегка. Но я тогда не особо это понимала, мне просто нравилось страдать (да и поводы были). Читая его биографию, понимаешь что это был очень сложный человек, понимаешь как много ему удалось сделать и хоть Nirvana считается самой попсовой из гранжа, и в целом это понятно, но понимаешь как много могло бы быть подругому, будь он жив. И честно, мне бы хотелось вживую посмотреть на Курта, но увы, это невозможно. Особенно глупым кажется в его истории причина его зависимости, попытки погасить боль, странно что при его возможностях, тогда врачи не смогли ничего сделать. Либо он сам не хотел делать такой выбор? Кто знает.</p>
+                    <p><strong>Крис Корнелл.</strong> Я даже не знаю кого я люблю больше, Soundgarden или Audioslave? А его голос? Это просто наслаждение какое-то, это гранж, но он такой мелодичный, ты будто плывешь по волнам. На мой взгляд, именно структурой, мелодичностью, голосом и подачей уникальны Soundgarden и Audioslave. Я не хочу сказать что тут вся заслуга исключительно Криса, совсем нет, я с таким удовольствием учила соло и рифы Тома Морелло из Audioslave. Я даже заказывала себе звукосниматели как у него, педаль квакушка была куплена под влиянием Audioslave, я учила теппинг из-за Тома Морелло. Смерть Криса стала для меня неожиданностью. Суицид, доза теблеток перед этим. Треки Black Hole Sun, Like a Stone и другие, навсегда останутся со мной.</p>
+                    <p><strong>Эми Уайнхаус.</strong> Да, не гранж, но отрицать ее культовость просто невозможно. Я обожаю ее альбом Back to Black, ее голос, манеру, музыку, подачу. Я добавила ее потому что помню, как меня поразила ее смерть, мне она казалась бессмертной, чтоли? Ее история пронизана тяжелой зависимостью и показывает буквально, что даже самых красивых творческих людей можно уничтожить. Они перестанут творить, выступать, заряжаться, дарить миру то, что они лучше всего умеют - эмоции, чувства, музыку. Я не согласна с тем, когда говорят, что употребление дает буст или это необходимо для гения. Я думаю все проще, это просто легкий способ уйти от проблем, от всего, буквально перестать существовать. И это пугает, когда ты добровольно позволяешь себе исчезать. В клипе, Эми как зеркало - она показывает момент разрыва реальности и является отсылкой куда все идет.</p>
+                    <p>Еще в клипе фигурирует отражение <strong>Брайана Джонса</strong>, да, это тоже не гранж, но мне хотелось почтить не только гранж музыкантов, но и показать что проблема глобальная для всех стилей музыки и групп. Его отражение в воде не случайно, это прямая отсылка на его смерть. Он утонул в бассейне, под воздействием алкоголя и наркотиков.</p>
+                    
+                    <p><strong>Теперь главное. История Вайноны Лизы Грин, она же LiL BO WEEP и Unaloon.</strong></p>
+                    <p>Ее история показывает, как влияет ранняя популярность на неокрепшую подростковую психику. Как легко вырвать человека из его спокойной жизни и как превратить ее в ад. То что с ней произошло - современная изнанка музыкальной индустрии. Людям нравилось ее меланхоличное творчество, но по факту за ним скрывалась реальная, невыносимая боль.</p>
+                    <p>Все началось с ее переезда в Лос-Анджелес, ради карьеры. В своих последних видео она рассказывала что примерно с ее 15 лет ее использовали, обманывали, финансово эксплуатировали. Это привело к развитию тяжелой формы ПТСР. Как следствие, чтобы залечить душевные раны, у нее началась наркотическая зависимость.</p>
+                    <p>Сюда же подключилось РПП, которое и ранее ее беспокоило, но теперь обрело совершенно иную форму. Одна из основных причин, которая повлияла на ее состояние - это потеря связи с семьеи, она находилась в зависимости от людей из местной музыкальной тусовки и индустрии. Ее парень использовал ее как ресурс, эмоционально и финансово, она неоднократно будет говорить что с подросткового возраста ее ломали как личность.</p>
+                    <p>Ее партнер и окружение, не просто не помогали ей во время депрессии, а активно затягивали её в зависимость. Кульминацией, стала ее беременность и потеря ребенка. В одном из видео, после ее экстренной репатриации обратно в Австралию, силами родителей, она говорит что собирается пойти к океану и возложить цветы своей дочери и призывает всех кто хочет пойти вместе с ней. Она не смогла пережить гибель ребенка.</p>
+                    <p>В марте 2022 года, она уходит из жизни из-за передозировки тяжелых медицинских препаратов и психоактивных веществ на фоне глубочайшего психоэмоционального кризиса.</p>
+                    <p>Ее отец, Мэттью Шофилд Грин, подтвердил ее смерть и оставил в Facebook, разрывающий душу пост:</p>
+                    <p class="quote">«В эти выходные мы проиграли битву за жизнь моей дочери против депрессии, травм, ПТСР и наркозависимости, с которыми мы неустанно боролись с тех пор, как вернули её из Америки... Она отчаянно сражалась со своими демонами, как и все мы рядом с ней, собирая осколки снова и снова, но она больше не могла бороться, и мы потеряли её».</p>
+                    <p>Эта история меня поразила. Жизнь одного человека, всего 22 года и сколько боли, какой резкий взлет и какое падение? Я просто не смогла пройти мимо.</p>
+                </div>
+            </div>
+
+            <div class="section" id="track">
+                <div class="section-title">Звук, кассета и отсылки в треке</div>
+                <div class="section-content">
+                    <p>Я добавила в музыку, текст, клип большое кол-во отсылок, чтобы картина была максимально полной, чтобы ты окунулся в этот мир. Давай я тебе покажу?</p>
+                    <p>Трек начинается с шума моря, это не просто шум. Я записала на диктофон мое любимое Балтийское море, на берегу Куршской косы. Вместе с ним, ты слышишь шипение пустой кассеты и щелчок моего плеера. Мы начинаем спокойно. В клипе, в эти моменты летит самолёт, он показывает начало катастрофы, именно когда Вайнона покидает Австралию и переезжает в штаты, ее жизнь начинает рушиться. В клипе, я показываю не только отсылки на великих музыкантов, я показываю как параллельно идёт деградация жизни, личности, как мы приближаемся к грани. Черный ворон показывает как мы погружаемся во тьму.</p>
+                    
+                    <p>В моей песне есть строчка — «Был ли в ней выбор? Наверное да, я пошла за тобой, потеряла себя». Это прямая параллель с тем что произошло с Вайноной в США.</p>
+                    
+                    <p>А строки «Он растворяет мою пустоту / Я больше не слышу в ответ тишину» показывают причины зависимости, это не развлечение, это не кайф, это попытка хоть как-то заглушить боль внутри.</p>
+                    
+                    <p class="quote">«Дружба? Счастье? Мне показалось / За мной след? Это опасно?»</p>
+                    <p>Эти строки подчеркивают ПТСР на фоне употребления и тяжелой зависимости. Эта песня не романтизация зависимости - это открытая рана, показывающая как это уничтожает личность. Как на это влияет общество.</p>
+
+                    <p>Вернёмся немного к звуку. Я специально купила педаль форк bigmuff, пропустила его через лампу, чтобы получить грязный звук. Отдельно я записала ее гудение, его ты можешь услышать в проигрышах. Часть дорожек намерено состарена а ещё часть я перезаписала на реальную пленку и вернула обратно в цифру, чтобы передать этот шершавый звук. В треке несколько гитар, основные партии на bigmuff, другая часть на amt ss20. Я не старалась передать ровный звук, мне хотелось передать грязь. В некоторых местах ритм ударных намеренно сбивается , это микро отсылка к другому треку Unaloon - Im not one to cry, где ритм прыгает. А еще, когда-то я играла, хоть и паршиво на ударных и мне всегда нравилось, когда ритм немножко прыгал, это придает что-то живое. В один момент, припев меняется, я это делаю намеренно, это отчаяние, это срыв, это разрушение.</p>
+                    
+                    <p>В тексте есть личные отсылки:</p>
+                    <p class="quote">«Ты умерла, мне ничего не нужно, я не дышу, я не слушаю.»</p>
+                    <p>Тут три отсылки. Первая, моя. Я представляла что у меня больше нет любимого человека рядом. Я не смогу так жить, это реально меня убивает, без любви нет смысла. Вторая, это Lil Bo Weep. Ее смерть, мой триггер. Третья, дочь Lil Bo Weep, я не представляю что она пережила, как пережить смерть ребенка? А ее последние слова, когда она обращается к слушателям и предлагает вознести цветы для дочери у океана. Я не могу это смотреть.</p>
+                    
+                    <p class="quote">«Умираю за январь и за февраль, наступает март а в ответ тишина, надеюсь что в апреле растаю сама.»</p>
+                    <p>Это отсылка с самой Lil Bo Weep, она умерла в марте.</p>
+                    
+                    <p class="quote">«Я пошла за тобой, потеряла себя.»</p>
+                    <p>Это история про ее отношения и ее окружение, которое вместе с ее парнем и подсадило её на вещества и поощряло это. Она очень любила парня, от него и забеременела и в итоге вместе с зависимостью осталась одна.</p>
+                    
+                    <p>Фраза в припеве - «боже спаси», это отсылка к треку Don't mind me, там тоже обращение к богу. А ещё, это последний крик о помощи, когда больше идти некуда, и увы, спасения в этой истории нет.</p>
+
+                    <div class="audio-player">
+                        <div class="player-controls">
+                            <button class="play-btn">▶</button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <span class="current-time">0:00
+                            <span class="duration">0:00
+                        </div>
+                        <div class="volume-control">
+                            <span class="volume-icon">🔊
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <audio src="rastvoryayus/rastvoryayus.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="clip">
+                <div class="section-title">Визуальная часть и финал истории</div>
+                <div class="section-content">
+                    <p>Сама песня идёт как история, но не совсем линейная, мы ее слышим от человека, который уже умер, уже сломался, это эхо, отголосок, мертвый факт. Мы можем только попытаться почувствовать эту боль и принять решение, а хотим ли мы такой путь? Почему об этом не говорят? Почему мы игнорируем разрушительность этих действий?</p>
+                    <p>Почему всех тех людей, которые погубили Lil Bo Weep, не наказали? Потому что это норма, в этой тусовке. Я хочу просто это показать и не просто показать, а крикнуть - стой! Не надо! Но это утопия, наверное?</p>
+                    <p>Мне очень откликнулась история Lil Bo Weep и мне безумно жаль, что ее больше нет.</p>
+                    <p>Трек заканчивается спокойно, все кончилось, переход, мы снова слышим море, кассетный шум, в один момент я записала звук остановки кассеты. История закончилась. Мы в безопасности, но эта безопасность зависит только от нас самих.</p>
+
+                    <div class="clip-card">
+                        <div class="clip-title">Клип Растворяюсь</div>
+                        <div class="video-container">
+                            <video controls class="custom-player" data-src="vid/rastvoryayus/index.m3u8" poster="vid/rastvoryayus/poster.jpg"></video>
+                        </div>
+                        <div class="clip-description">
+                            
+                        </div>
+                    </div> 
+
+                    <p style="margin-top: 30px;">Вся эта история, сильно окунула меня в начало моего пути, тогда у меня была группа и мы играли гранж. Но знаете, тогда, я вообще не понимала зачем играю. Просто было круто и все. Сейчас, мне захотелось вернуться, но уже со смыслом и с той версией себя, какая я сейчас.</p>
+                    <p>Спасибо тебе, что прочитал мой поток сознания. Я надеюсь мне удалось передать, те чувства, мысли и эмоции, которые я вложила в этот релиз.</p>
+                    <p>Спасибо тебе за прослушивание.</p>
+                    <p>Береги себя.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audioPlayers = document.querySelectorAll('.audio-player');
+            
+            audioPlayers.forEach(player => {
+                const audio = player.querySelector('audio');
+                const playBtn = player.querySelector('.play-btn');
+                const progressContainer = player.querySelector('.progress-container');
+                const progressBar = player.querySelector('.progress');
+                const currentTimeEl = player.querySelector('.current-time');
+                const durationEl = player.querySelector('.duration');
+                const volumeSlider = player.querySelector('.volume-slider');
+                const volumeIcon = player.querySelector('.volume-icon');
+                
+                audio.volume = volumeSlider.value;
+                
+                function formatTime(seconds) {
+                    let min = Math.floor(seconds / 60);
+                    let sec = Math.floor(seconds % 60);
+                    return min + ':' + (sec < 10 ? '0' + sec : sec);
+                }
+                
+                function updateTime() {
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                    if(!isNaN(audio.duration)) {
+                        durationEl.textContent = formatTime(audio.duration);
+                        const progressPercent = (audio.currentTime / audio.duration) * 100;
+                        progressBar.style.width = progressPercent + '%';
+                    }
+                }
+                
+                playBtn.addEventListener('click', function() {
+                    if (audio.paused) {
+                        audio.play();
+                        playBtn.textContent = '❚❚';
+                    } else {
+                        audio.pause();
+                        playBtn.textContent = '▶';
+                    }
+                });
+                
+                audio.addEventListener('timeupdate', updateTime);
+                
+                progressContainer.addEventListener('click', function(e) {
+                    const width = this.clientWidth;
+                    const clickX = e.offsetX;
+                    const duration = audio.duration;
+                    if(!isNaN(duration)) {
+                        audio.currentTime = (clickX / width) * duration;
+                    }
+                });
+                
+                volumeSlider.addEventListener('input', function() {
+                    audio.volume = this.value;
+                    if (this.value == 0) {
+                        volumeIcon.textContent = '🔇';
+                    } else if (this.value < 0.5) {
+                        volumeIcon.textContent = '🔈';
+                    } else {
+                        volumeIcon.textContent = '🔊';
+                    }
+                });
+                
+                audio.addEventListener('ended', function() {
+                    playBtn.textContent = '▶';
+                    audio.currentTime = 0;
+                });
+                
+                audio.addEventListener('loadedmetadata', function() {
+                    durationEl.textContent = formatTime(audio.duration);
+                });
+            });
+        });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var videos = document.querySelectorAll('video.custom-player');
+            
+            videos.forEach(function(video) {
+                var src = video.getAttribute('data-src');
+                
+                if (Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } 
+                else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
